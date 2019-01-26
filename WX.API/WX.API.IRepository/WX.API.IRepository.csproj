@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Near\IAdvertisingInfoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Car\IShopCarRepoitory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WX.API.MODEL\WX.API.MODEL.csproj">

@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/xiaoxi/xiaoxi",
     "pages/pay/pay",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/Near/Near"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -26,7 +27,7 @@
         "selectedIconPath": "image/shouye.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/Near/Near",
         "text": "周边",
         "iconPath": "image/huodong1.png",
         "selectedIconPath": "image/huodong.png"

@@ -42,6 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Near\AdvertisingInfo.cs" />
+    <Compile Include="Personal\Allorders.cs" />
+    <Compile Include="Personal\Classify.cs" />
+    <Compile Include="Personal\CollectionInfo.cs" />
+    <Compile Include="Personal\GoodsInfo.cs" />
+    <Compile Include="Personal\Img.cs" />
+    <Compile Include="Personal\OrderForm.cs" />
+    <Compile Include="Personal\OrderGoods.cs" />
     <Compile Include="Product\ProductInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Car\ShopCar.cs" />

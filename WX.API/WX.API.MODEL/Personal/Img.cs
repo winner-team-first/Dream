@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WX.API.MODEL.Personal
+{
+    /// <summary>
+    /// 商品图片表
+    /// </summary>
+    public class Img
+    {
+        public int ImgID { get; set; }
+        public int GoodsID { get; set; }
+        public string GoodsImage { get; set; }
+    }
+}

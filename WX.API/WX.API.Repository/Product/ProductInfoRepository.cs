@@ -8,25 +8,36 @@ using WX.API.IRepository.Product;
 using WX.API.MODEL.Product;
 using Dapper;
 using MySql.Data.MySqlClient;
+using WX.API.Common;
 
 namespace WX.API.Repository.Product
 {
     public class ProductInfoRepository : IProductInfoRepository
     {
-        string str = ConfigurationManager.ConnectionStrings["ConnectionGzx"].ConnectionString;
+   
+        /// <summary>
+        /// 查询所有数据
+        /// </summary>
+        /// <returns></returns>
         public List<ProductInfo> GetProductInfo()
         {
-            using (MySqlConnection conn=new MySqlConnection(str))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                return conn.Query<ProductInfo>("select * from ProductInfo").ToList();
+                var productList= conn.Query<ProductInfo>("select * from ProductInfo").ToList();
+                return productList;
             }
         }
-
-        public List<ProductInfo> GetDetailed()
+        /// <summary>
+        /// 根据商品ID查询所有商品详情图片
+        /// </summary>
+        /// <param name="ProductID"></param>
+        /// <returns></returns>
+        public List<Img> GetImgByProductID(int ProductID)
         {
-            using (MySqlConnection conn = new MySqlConnection(str))
+            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                return conn.Query<ProductInfo>("select * from img").ToList();
+                var imgList= conn.Query<Img>("select * from img where ProductID=" + ProductID + "").ToList();
+                return imgList;
             }
         }
     }

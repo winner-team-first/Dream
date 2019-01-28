@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/xiaoxi/xiaoxi",
     "pages/pay/pay",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/collection/collection"
   ],
   "window": {
     "navigationBarTextStyle": "white",

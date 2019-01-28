@@ -1,30 +1,28 @@
-var app = getApp();
-
+// pages/collection/collection.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.login({
-      success: function () {
-        wx.getUserInfo({
-          success: function (res) {
-            that.setData({
-              userInfo: res.userInfo
-            })
-          }
+    var that=this;
+    wx.request({
+      url: 'http://localhost:61966/api/Personal/CollectionInfoShow',
+      method:'get',
+      success:function (res) {
+        console.log(res.data)
+        that.setData({
+          items:res.data
         })
       }
-    });
+    }) 
   },
 
   /**
@@ -74,10 +72,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  changeName:function() {
-    wx.navigateTo({
-      url: '../collection/collection'
-    })
-  } 
+  }
 })

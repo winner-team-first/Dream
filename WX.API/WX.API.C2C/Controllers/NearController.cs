@@ -20,5 +20,13 @@ namespace WX.API.C2C.Controllers
             List<AdvertisingInfo> list = AdvertisingDal.Show();
             return list;
         }
+
+        [ActionName("ShowProduct")]
+        [HttpGet]
+        public List<ProductInfo> ShowProduct()
+        {
+            List<ProductInfo> list = AdvertisingDal.ShowProduct();
+            return list;
+        }
     }
 }

@@ -4,7 +4,6 @@ using System.Text;
 using System.Web;
 
 
-
 public class CookieHelper
 {
     const string COOKIE_PATH = "/";

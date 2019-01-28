@@ -14,7 +14,10 @@ using WX.API.IRepository.Car;
 using WX.API.Repository.Car;
 using WX.API.IRepository.Product;
 using WX.API.Repository.Product;
-
+using WX.API.Repository.Personal;
+using WX.API.IRepository.Personal;
+using WX.API.IRepository.Address;
+using WX.API.Repository.Address;
 
 namespace WX.API.C2C
 {
@@ -47,7 +50,8 @@ namespace WX.API.C2C
             container.RegisterType<AdvertisingInfoRepository>().As<IAdvertisingInfoRepository>();//前面是Repository里面的方法 后面写他所继承的借口
             container.RegisterType<ShopCarRepository>().As<IShopCarRepoitory>();
             container.RegisterType<ProductInfoRepository>().As<IProductInfoRepository>();
-
+            container.RegisterType<CollectionInfoRepository>().As<ICollectionInfoRepository>();
+            container.RegisterType<AddressRepository>().As<IAddressRepository>();
         }
     }
 }

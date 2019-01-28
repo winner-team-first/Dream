@@ -23,5 +23,14 @@ namespace WX.API.Repository.Near
                 return list;
             }
         }
+
+        public List<ProductInfo> ShowProduct()
+        {
+            using (IDbConnection con = new MySqlConnection(str))
+            {
+                List<ProductInfo> list = con.Query<ProductInfo>("select * from productinfo").ToList();
+                return list;
+            }
+        }
     }
 }

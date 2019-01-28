@@ -11,19 +11,26 @@ namespace WX.API.MODEL.Near
         public int ID { get; set; }
 
         /// <summary>
-        /// 
+        /// 广告ID
         /// </summary>
         public int ProductID { get; set; }
 
+
         /// <summary>
-        /// 
+        /// 广告图片
         /// </summary>
         public string ProductImg { get; set; }
 
+
         /// <summary>
-        /// 
+        /// 广告开始时间
         /// </summary>
         public DateTime CreateTime { get; set; }
+
+
+        /// <summary>
+        /// 广告结束时间
+        /// </summary>
         public DateTime EndTime { get; set; }
     }
 }

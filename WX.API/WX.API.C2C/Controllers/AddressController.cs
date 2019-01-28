@@ -21,10 +21,24 @@ namespace WX.API.C2C.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [ActionName("GetList")]
         public List<MODEL.Address.Address> GetList()
         {
             List<MODEL.Address.Address> list = IAddr.GetList();
             return list;
+        }
+
+        /// <summary>
+        /// 根据ID 删除地址信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ActionName("DeleteByID")]
+        public int DeleteByID(int id)
+        {
+            int i = IAddr.DeleteByID(id);
+            return i;
         }
     }
 }

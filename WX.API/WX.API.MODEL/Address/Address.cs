@@ -11,7 +11,7 @@ namespace WX.API.MODEL.Address
         /// <summary>
         /// 地址表ID
         /// </summary>
-        public int AddressID { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// 收货人

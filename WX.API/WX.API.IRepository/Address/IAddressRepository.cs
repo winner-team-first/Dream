@@ -20,5 +20,7 @@ namespace WX.API.IRepository.Address
         /// 根据ID 删除地址
         /// </summary>
         int DeleteByID(int id);
+
+        
     }
 }

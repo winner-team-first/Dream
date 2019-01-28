@@ -27,7 +27,7 @@ namespace WX.API.Repository.Address
         {
             using (MySqlConnection conn = new MySqlConnection(str))
             {
-                int i = conn.Execute("delete from Address where AddressID = " + id);
+                int i = conn.Execute("delete from Address where ID = " + id);
                 return i;
             }
         }

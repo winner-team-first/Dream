@@ -20,6 +20,19 @@ namespace WX.API.Repository.Address
         string str = ConfigurationManager.ConnectionStrings["ConnectionLjb"].ConnectionString;
 
         /// <summary>
+        /// 根据ID删除地址
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteByID(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(str))
+            {
+                int i = conn.Execute("delete from Address where AddressID = " + id);
+                return i;
+            }
+        }
+
+        /// <summary>
         /// 地址信息显示 
         /// </summary>
         /// <returns></returns>
@@ -27,7 +40,6 @@ namespace WX.API.Repository.Address
         {
             using (MySqlConnection conn = new MySqlConnection(str))
             {
-                conn.Open();
                 List<MODEL.Address.Address> list = conn.Query<MODEL.Address.Address>("select * from Address").ToList();
                 return list;
             }

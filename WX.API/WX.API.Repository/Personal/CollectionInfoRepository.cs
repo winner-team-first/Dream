@@ -19,11 +19,12 @@ namespace WX.API.Repository.Personal
         /// 我的收藏(显示)
         /// </summary>
         /// <returns></returns>
-        public List<CollectionInfo> CollectionInfoShow(string pid)
+        /// 
+        public List<CollectionInfo> CollectionInfoShow()
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<CollectionInfo>("select b.OrderProductName,b.OrderProductName from CollectionInfo a ,OrderGoods b where a.GoodsID=b.OrderGoodsID and OrderGoodsID="+pid).ToList();
+                return con.Query<CollectionInfo>("select ProductName,ProductPrice, ProductStock,ProductImage from ProductInfo ").ToList();
             }
         }
         /// <summary>
@@ -34,7 +35,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderNum 编号, b.OrderProductName 名称,b.OrderProductTotalPrice 单价,b.GoodsNum 数量,b.OrderProductPrice 总价 ,a.OrderStatus 状态 ,c.GoodsImage 图片 from OrderForm a , OrderGoods b , GoodsInfo c").ToList();
+                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo c ").ToList();
             }
         }
         /// <summary>
@@ -44,7 +45,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderNum 编号, b.OrderProductName 名称,b.OrderProductTotalPrice 单价,b.GoodsNum 数量,b.OrderProductPrice 总价 ,a.OrderStatus 状态 ,c.GoodsImage 图片 from OrderForm a , OrderGoods b , GoodsInfo c where a.OrderStatus="+pid).ToList();
+                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
         /// <summary>
@@ -54,7 +55,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderNum 编号, b.OrderProductName 名称,b.OrderProductTotalPrice 单价,b.GoodsNum 数量,b.OrderProductPrice 总价 ,a.OrderStatus 状态 ,c.GoodsImage 图片 from OrderForm a , OrderGoods b , GoodsInfo c where a.OrderStatus=" + pid).ToList();
+                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
         /// <summary>
@@ -64,7 +65,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderNum 编号, b.OrderProductName 名称,b.OrderProductTotalPrice 单价,b.GoodsNum 数量,b.OrderProductPrice 总价 ,a.OrderStatus 状态 ,c.GoodsImage 图片 from OrderForm a , OrderGoods b , GoodsInfo c where a.OrderStatus=" + pid).ToList();
+                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
         /// <summary>
@@ -74,7 +75,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderNum 编号, b.OrderProductName 名称,b.OrderProductTotalPrice 单价,b.GoodsNum 数量,b.OrderProductPrice 总价 ,a.OrderStatus 状态 ,c.GoodsImage 图片 from OrderForm a , OrderGoods b , GoodsInfo c where a.OrderStatus=" + pid).ToList();
+                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
     }

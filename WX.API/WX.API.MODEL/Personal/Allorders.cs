@@ -11,15 +11,12 @@ namespace WX.API.MODEL.Personal
     /// </summary>
     public class Allorders
     {
-        //select a.OrderNum 编号, b.OrderProductName 名称, b.OrderProductTotalPrice 单价,
-        //    b.GoodsNum 数量, b.OrderProductPrice 总价, a.OrderStatus 状态, c.GoodsImage 
-        //    图片 from OrderForm a , OrderGoods b, GoodsInfo c
-        public string OrderNum { get; set; }
+        public int OrderID { get; set; }
         public string OrderProductName { get; set; }
         public decimal OrderProductTotalPrice { get; set; }
-        public int GoodsNum { get; set; }
+        public int OrderProductNum { get; set; }
         public decimal OrderProductPrice { get; set; }
-        public int OrderStatus { get; set; }
-        public string GoodsImage { get; set; }
+        public int OrderState { get; set; }
+        public string ProductImage { get; set; }
     }
 }

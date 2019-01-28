@@ -1,0 +1,34 @@
+<!--pages/collection/collection.wxml-->
+
+<!-- <text>{{item.ProductName}}</text>
+<text>{{item.ProductPrice}}</text>
+<text>{{item.ProductStock}}</text>
+<text>{{item.ProductImage}}</text>
+<image src="{{item.ProductImage}}"></image> -->
+
+<view>
+      <scroll-view scroll-Y="true" scroll-X="false"> 
+          <view class="wuge" wx:if="{{allGoods == '' || allGoods.length == 0}}">没有任何商品</view>
+              <view wx:for="{{items}}" wx:key="item.OrderID">
+                <view class="item" >
+                      <view class="image" bindtap="toDetail" data-id="{{item.id}}">
+                          <image src="{{item.ProductImage}}"/>
+                      </view>
+                      <view class="content">
+                          <text class="h1">{{item.ProductName}}</text>
+                          <!--<text class="p">1个／不低于120斤</text>-->
+                          <text class="p"></text>
+                          <text class="p myp">¥{{item.ProductPrice}}</text>
+                      </view>
+                      <view class="number">
+                          <view class="plus" bindtap="jian" data-id="{{item.id}}">-</view>
+                          <view class="sum">{{item.ProductStock}}</view>
+                          <view class="plus" bindtap="jia" data-id="{{item.id}}">+</view>
+                      </view>
+                </view>
+          </view>
+      </scroll-view>
+      <view class="footer" wx:if="{{sumPrice != 0}}">
+      </view>
+</view>
+

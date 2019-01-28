@@ -17,9 +17,12 @@ namespace WX.API.C2C.Controllers
         /// 我的收藏(显示)
         /// </summary>
         /// <returns></returns>
-        public List<CollectionInfo> CollectionInfoShow(string pid)
+        /// 
+        [HttpGet]
+        public List<CollectionInfo> CollectionInfoShow()
         {
-            return ICollectionInfoRepository.CollectionInfoShow(pid);
+            List<CollectionInfo>list= ICollectionInfoRepository.CollectionInfoShow();
+            return list;
         }
         /// <summary>
         /// 所有订单显示

@@ -14,7 +14,7 @@ namespace WX.API.IRepository.Personal
         /// </summary>
         /// <param name="pid"></param>
         /// <returns></returns>
-        List<CollectionInfo> CollectionInfoShow(string pid);
+        List<CollectionInfo> CollectionInfoShow();
         /// <summary>
         /// 所有订单
         /// </summary>

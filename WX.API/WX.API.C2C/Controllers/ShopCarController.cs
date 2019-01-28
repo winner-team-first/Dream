@@ -17,7 +17,8 @@ namespace WX.API.C2C.Controllers
         [ActionName("Show")]
         public List<ShopCar> Show()
         {
-            return ShopCarRepoitory.Show(); 
+            List<ShopCar> list = ShopCarRepoitory.Show();
+            return list; 
         }
     }
 }

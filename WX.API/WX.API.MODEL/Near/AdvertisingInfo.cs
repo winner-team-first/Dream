@@ -8,9 +8,21 @@ namespace WX.API.MODEL.Near
 {
     public class AdvertisingInfo
     {
-        public int AdvertisingID { get; set; }
+        public int ID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int ProductID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string ProductImg { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public DateTime CreateTime { get; set; }
         public DateTime EndTime { get; set; }
     }

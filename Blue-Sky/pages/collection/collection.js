@@ -72,5 +72,42 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+//根据ID 删除收藏商品
+deletesc:function(e) {
+var that=this;
+  var getid = e.currentTarget.dataset.ids;
+  console.log(getid);
+  wx.request({
+    url: 'http://localhost:61966/api/Personal/Delete_CollectionInfoShow',
+    method:'get',
+    data: { pid: getid},
+    success:function (res)
+    { 
+      if(res.data>0)
+      {
+        wx.showToast({
+          title: '删除成功',
+          icon:'success',
+          duration:2000
+        })
+        that.onLoad();
+      }
+      else{
+        wx.showToast({
+          title: '删除失败',
+          icon:'default',
+          duration:2000
+        })
+      }
+    }
+  })
+}
+
+
+
+
+
+
+
 })

@@ -11,25 +11,22 @@ using System.Configuration;
 using MySql.Data.MySqlClient;
 using WX.API.Common;
 
+
 namespace WX.API.Repository.Near
 {
-    public class AdvertisingInfoRepository : IAdvertisingInfoRepository
+    public class NProductRepository : INProductRepository
     {
-
-
         /// <summary>
-        /// 显示广告
+        /// 显示销量Top-5
         /// </summary>
         /// <returns></returns>
-        public List<AdvertisingInfo> GetAdvertisingList()
+        public List<ProductInfo> GetProductList()
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.ZswConnection))
             {
-                List<AdvertisingInfo> advertisingInfoList = con.Query<AdvertisingInfo>("select * from advertisinginfo").ToList();
-                return advertisingInfoList;
+                List<ProductInfo> productInfoList = con.Query<ProductInfo>("select * from productinfo order by ProductSales desc limit 0,5").ToList();
+                return productInfoList;
             }
         }
-
-     
     }
 }

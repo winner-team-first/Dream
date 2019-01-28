@@ -11,7 +11,7 @@ namespace WX.API.MODEL.Personal
     /// </summary>
     public class OrderForm
     {
-        public int OrderID { get; set; }
+        public int ID { get; set; }
         public int UserID { get; set; }
         public string OrderNum { get; set; }
         public string OrderAddrPerson { get; set; }

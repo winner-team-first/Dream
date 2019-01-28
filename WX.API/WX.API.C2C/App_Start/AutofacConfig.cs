@@ -52,6 +52,7 @@ namespace WX.API.C2C
             container.RegisterType<ProductInfoRepository>().As<IProductInfoRepository>();
             container.RegisterType<CollectionInfoRepository>().As<ICollectionInfoRepository>();
             container.RegisterType<AddressRepository>().As<IAddressRepository>();
+            container.RegisterType<NProductRepository>().As<INProductRepository>();
         }
     }
 }

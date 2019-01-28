@@ -1,0 +1,5 @@
+<!--pages/myorder/myorder.wxml-->
+<text>所有订单</text>
+<text>代付款</text>
+<text>待支付</text>
+<text>待收货</text>

@@ -7,12 +7,12 @@ using WX.API.MODEL.Near;
 
 namespace WX.API.IRepository.Near
 {
-    public interface IAdvertisingInfoRepository
+    public interface INProductRepository
     {
         /// <summary>
-        /// 显示广告
+        /// 显示Top5商品
         /// </summary>
         /// <returns></returns>
-        List<AdvertisingInfo> GetAdvertisingList();
+        List<ProductInfo> GetProductList();
     }
 }

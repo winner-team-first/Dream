@@ -13,6 +13,6 @@ namespace WX.API.IRepository.Near
         /// 显示Top5商品
         /// </summary>
         /// <returns></returns>
-        List<ProductInfo> ShowProduct();
+        List<ProductInfo> GetProductList();
     }
 }

@@ -9,25 +9,24 @@ using Dapper;
 using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using WX.API.Common;
 
 namespace WX.API.Repository.Near
 {
     public class AdvertisingInfoRepository : IAdvertisingInfoRepository
     {
-        //获取连接字符串
-        string str = ConfigurationManager.ConnectionStrings["ConnectionZsw"].ConnectionString;
 
 
         /// <summary>
         /// 显示广告
         /// </summary>
         /// <returns></returns>
-        public List<AdvertisingInfo> ShowAdvertisingInfo()
+        public List<AdvertisingInfo> GetAdvertisingList()
         {
-            using (IDbConnection con = new MySqlConnection(str) )
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.ZswConnection))
             {
-                List<AdvertisingInfo> AdvertisingInfoList = con.Query<AdvertisingInfo>("select * from advertisinginfo").ToList();
-                return AdvertisingInfoList;
+                List<AdvertisingInfo> advertisingInfoList = con.Query<AdvertisingInfo>("select * from advertisinginfo").ToList();
+                return advertisingInfoList;
             }
         }
 

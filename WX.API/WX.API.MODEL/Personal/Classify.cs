@@ -11,7 +11,7 @@ namespace WX.API.MODEL.Personal
     /// </summary>
     public class Classify
     {
-        public int BrandID { get; set; }
+        public int ID { get; set; }
         public string BrandName { get; set; }
     }
 }

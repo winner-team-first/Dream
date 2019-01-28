@@ -8,7 +8,9 @@
 </view>
 <view class="wode_item_wrap">
 </view>
+
 <view class="personalList">
+<view class="iconfont icon-reserve"  bindtap="myorder">我的订单</view>
   <view class="iconfont icon-reserve"  bindtap="listFirst">优惠劵中心</view>
   <view class="iconfont icon-about" bindtap='changeName'>我的收藏</view>
   <view class="iconfont icon-password" bindtap='Address' ><text>地址管理</text></view>

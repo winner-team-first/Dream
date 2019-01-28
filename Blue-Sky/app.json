@@ -6,7 +6,8 @@
     "pages/xiaoxi/xiaoxi",
     "pages/pay/pay",
     "pages/address/address",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/myorder/myorder"
   ],
   "window": {
     "navigationBarTextStyle": "white",

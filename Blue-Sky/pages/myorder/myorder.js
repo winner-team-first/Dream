@@ -1,30 +1,18 @@
-var app = getApp();
-
+// pages/myorder/myorder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.login({
-      success: function () {
-        wx.getUserInfo({
-          success: function (res) {
-            that.setData({
-              userInfo: res.userInfo
-            })
-          }
-        })
-      }
-    });
+
   },
 
   /**
@@ -74,15 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  changeName:function() {
-    wx.navigateTo({
-      url: '../collection/collection'
-    })
-  } ,
-  myorder:function(){
-    wx.navigateTo({
-      url: '../myorder/myorder'
-    })
   }
 })

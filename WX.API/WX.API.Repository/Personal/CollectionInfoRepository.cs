@@ -24,7 +24,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<CollectionInfo>("select ProductName,ProductPrice, ProductStock,ProductImage from ProductInfo ").ToList();
+                return con.Query<CollectionInfo>("select b.ID, a.ProductName,a.ProductPrice, a.ProductStock,a.ProductImage from ProductInfo a,Collection b where a.ID=b.GoodsID").ToList();
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo c ").ToList();
+                return con.Query<Allorders>("select a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo c ").ToList();
             }
         }
         /// <summary>
@@ -45,7 +45,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
+                return con.Query<Allorders>("select a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
+                return con.Query<Allorders>("select a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
+                return con.Query<Allorders>("select a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
             }
         }
         /// <summary>
@@ -75,7 +75,19 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(conn))
             {
-                return con.Query<Allorders>("select a.OrderID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
+                return con.Query<Allorders>("select a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + pid).ToList();
+            }
+        }
+        /// <summary>
+        /// 取消收藏
+        /// </summary>
+        /// <returns></returns>
+        public int Delete_CollectionInfoShow(string pid)
+        {
+            using (IDbConnection con = new MySqlConnection(conn))
+            {
+                string sql = "delete from Collection where ID=" + pid;
+                return con.Execute(sql);
             }
         }
     }

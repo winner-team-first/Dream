@@ -37,5 +37,11 @@ namespace WX.API.IRepository.Personal
         /// Cancel已取消
         /// </summary>
         List<Allorders> CancelShow(string pid);
+        /// <summary>
+        /// 取消收藏
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        int Delete_CollectionInfoShow(string pid);
     }
 }

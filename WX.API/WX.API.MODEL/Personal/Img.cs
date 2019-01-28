@@ -11,7 +11,7 @@ namespace WX.API.MODEL.Personal
     /// </summary>
     public class Img
     {
-        public int ImgID { get; set; }
+        public int ID { get; set; }
         public int GoodsID { get; set; }
         public string GoodsImage { get; set; }
     }

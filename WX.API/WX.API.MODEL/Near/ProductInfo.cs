@@ -8,7 +8,7 @@ namespace WX.API.MODEL.Near
 {
     public class ProductInfo
     {
-        public int ProductID { get; set; }
+        public int ID { get; set; }
         public string ProductName { get; set; }
         public string ProductSummary { get; set; }
         public string ProductImage { get; set; }

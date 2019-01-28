@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WX.API.MODEL.Personal
+namespace WX.API.MODEL.Product
 {
-    /// <summary>
-    /// 商品分类表
-    /// </summary>
-    public class Classify
+    public  class Img
     {
         public int ID { get; set; }
-        public string BrandName { get; set; }
+        public int ProductID { get; set; }
+        public string ProductImage { get; set; }
     }
 }

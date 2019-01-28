@@ -21,5 +21,13 @@ namespace WX.API.Repository.Product
                 return conn.Query<ProductInfo>("select * from ProductInfo").ToList();
             }
         }
+
+        public List<ProductInfo> GetDetailed()
+        {
+            using (MySqlConnection conn = new MySqlConnection(str))
+            {
+                return conn.Query<ProductInfo>("select * from img").ToList();
+            }
+        }
     }
 }

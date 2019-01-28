@@ -11,7 +11,7 @@ namespace WX.API.MODEL.Personal
     /// </summary>
     public class Allorders
     {
-        public int OrderID { get; set; }
+        public int ID { get; set; }
         public string OrderProductName { get; set; }
         public decimal OrderProductTotalPrice { get; set; }
         public int OrderProductNum { get; set; }

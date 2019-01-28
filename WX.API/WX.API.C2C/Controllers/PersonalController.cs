@@ -61,5 +61,17 @@ namespace WX.API.C2C.Controllers
         {
             return ICollectionInfoRepository.CancelShow(pid);
         }
+        /// <summary>
+        /// 取消收藏
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        /// 
+        [ActionName("Delete_CollectionInfoShow")]
+        [HttpGet]
+        public int Delete_CollectionInfoShow(string pid)
+        {
+            return ICollectionInfoRepository.Delete_CollectionInfoShow(pid);
+        }
     }
 }

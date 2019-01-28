@@ -14,12 +14,12 @@ namespace WX.API.IRepository.Address
         /// 地址显示
         /// </summary>
         /// <returns></returns>
-        List<WX.API.MODEL.Address.Address> GetList();
+        List<WX.API.MODEL.Address.Address> GetAddressList();
 
         /// <summary>
         /// 根据ID 删除地址
         /// </summary>
-        int DeleteByID(int id);
+        int Delete(int id);
 
         
     }

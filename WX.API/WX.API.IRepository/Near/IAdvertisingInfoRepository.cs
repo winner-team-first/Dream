@@ -11,5 +11,7 @@ namespace WX.API.IRepository.Near
     {
         List<AdvertisingInfo> Show();
 
+        List<ProductInfo> ShowProduct();
+
     }
 }

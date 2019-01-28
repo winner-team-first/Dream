@@ -20,5 +20,11 @@ namespace WX.API.C2C.Controllers
             List<ShopCar> list = ShopCarRepoitory.Show();
             return list; 
         }
+        [HttpPost]
+        [ActionName("Button")]
+        public void Button(int count, int id)
+        {
+            ShopCarRepoitory.Button( count, id);
+        }
     }
 }

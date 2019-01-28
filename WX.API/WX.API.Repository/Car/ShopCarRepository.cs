@@ -15,12 +15,29 @@ namespace WX.API.Repository.Car
     {
         string str = ConfigurationManager.ConnectionStrings["ConnectionLhj"].ConnectionString;
 
-        public List<ShopCar> Show()
+        public List<ShopCar> GetShopCarList()
+        {
+            using (IDbConnection con = new MySqlConnection(str))
+            {
+                var ShopCarList = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2").ToList();
+                return ShopCarList;
+            }
+        }
+        public void Button(int count, int id)
+        {
+            using (IDbConnection con = new MySqlConnection(str))
+            {
+                con.Execute("update ShopCar set ProductCount = " + count + " where ID = " + id + " ");
+            }
+        }
+        public List<ShopCar> Lost()
         {
             using (IDbConnection con = new MySqlConnection(str))
             {
                 return con.Query<ShopCar>("select a.ShopCarId,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ProductID where UID = 2").ToList();
             }
         }
+
+        
     }
 }

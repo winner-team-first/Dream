@@ -14,18 +14,18 @@ namespace WX.API.C2C.Controllers
 {
     public class AddressController : ApiController
     {
-        public IAddressRepository IAddr { get; set; }
+        public IAddressRepository Addr { get; set; }
 
         /// <summary>
         /// 收货地址显示
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [ActionName("GetList")]
-        public List<MODEL.Address.Address> GetList()
+        [ActionName("GetAddressList")]
+        public List<MODEL.Address.Address> GetAddressList()
         {
-            List<MODEL.Address.Address> list = IAddr.GetList();
-            return list;
+            var addressList = Addr.GetAddressList();
+            return addressList;
         }
 
         /// <summary>
@@ -34,10 +34,10 @@ namespace WX.API.C2C.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [ActionName("DeleteByID")]
-        public int DeleteByID(int id)
+        [ActionName("Delete")]
+        public int Delete(int id)
         {
-            int i = IAddr.DeleteByID(id);
+            int i = Addr.Delete(id);
             return i;
         }
     }

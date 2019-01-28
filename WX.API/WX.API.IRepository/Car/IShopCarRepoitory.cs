@@ -9,6 +9,8 @@ namespace WX.API.IRepository.Car
 {
     public interface IShopCarRepoitory
     {
-        List<ShopCar> Show();
+        List<ShopCar> GetShopCarList();
+
+        void Button(int count, int id);
     }
 }

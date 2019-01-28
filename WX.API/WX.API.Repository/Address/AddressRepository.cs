@@ -23,7 +23,7 @@ namespace WX.API.Repository.Address
         /// 根据ID删除地址
         /// </summary>
         /// <returns></returns>
-        public int DeleteByID(int id)
+        public int Delete(int id)
         {
             using (MySqlConnection conn = new MySqlConnection(str))
             {
@@ -36,12 +36,12 @@ namespace WX.API.Repository.Address
         /// 地址信息显示 
         /// </summary>
         /// <returns></returns>
-        public List<MODEL.Address.Address> GetList()
+        public List<MODEL.Address.Address> GetAddressList()
         {
             using (MySqlConnection conn = new MySqlConnection(str))
             {
-                List<MODEL.Address.Address> list = conn.Query<MODEL.Address.Address>("select * from Address").ToList();
-                return list;
+                List<MODEL.Address.Address> addressList = conn.Query<MODEL.Address.Address>("select * from Address").ToList();
+                return addressList;
             }
         }
     }

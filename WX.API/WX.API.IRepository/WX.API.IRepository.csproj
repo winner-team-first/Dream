@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Address\IAddressRepository.cs" />
     <Compile Include="Near\IAdvertisingInfoRepository.cs" />
+    <Compile Include="Near\INProductRepository.cs" />
     <Compile Include="Personal\ICollectionInfoRepository.cs" />
     <Compile Include="Product\IProductInfoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

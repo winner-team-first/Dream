@@ -11,22 +11,20 @@ namespace WX.API.C2C.Controllers
 {
     public class NearController : ApiController
     {
-        public IAdvertisingInfoRepository AdvertisingDal { set; get; }
+        //广告属性
+        public IAdvertisingInfoRepository _advertisingRepository { set; get; }
 
-        [ActionName("Show")]
+        /// <summary>
+        /// 显示广告
+        /// </summary>
+        /// 
+        /// <returns></returns>
+        [ActionName("ShowAdvertisingInfo")]
         [HttpPost]
-        public List<AdvertisingInfo> Show()
+        public List<AdvertisingInfo> ShowAdvertisingInfo()
         {
-            List<AdvertisingInfo> list = AdvertisingDal.Show();
-            return list;
-        }
-
-        [ActionName("ShowProduct")]
-        [HttpGet]
-        public List<ProductInfo> ShowProduct()
-        {
-            List<ProductInfo> list = AdvertisingDal.ShowProduct();
-            return list;
+            List<AdvertisingInfo> advertisingInfoList = _advertisingRepository.ShowAdvertisingInfo();
+            return advertisingInfoList;
         }
     }
 }

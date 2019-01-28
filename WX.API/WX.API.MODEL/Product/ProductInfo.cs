@@ -8,7 +8,7 @@ namespace WX.API.MODEL.Product
 {
     public class ProductInfo
     {
-        public int ProductID { get; set; }
+        public int ID { get; set; }
         public string ProductName { get; set; }
         public string ProductSummary { get; set; }
         public string ProductImage { get; set; }
@@ -17,6 +17,8 @@ namespace WX.API.MODEL.Product
         public int ProductSales { get; set; }
         public int ClassifyID { get; set; }
         public int ShopID { get; set; }
+
+        public List<Img> ImgList { get; set; } = new List<Img>();
 
     }
 }

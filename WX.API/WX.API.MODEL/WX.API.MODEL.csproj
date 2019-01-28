@@ -51,6 +51,7 @@
     <Compile Include="Personal\Img.cs" />
     <Compile Include="Personal\OrderForm.cs" />
     <Compile Include="Personal\OrderGoods.cs" />
+    <Compile Include="Product\Img.cs" />
     <Compile Include="Product\ProductInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Car\ShopCar.cs" />

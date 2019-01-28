@@ -51,6 +51,7 @@
     <Compile Include="Address\AddressRepository.cs" />
     <Compile Include="Car\ShopCarRepository.cs" />
     <Compile Include="Near\AdvertisingInfoRepository.cs" />
+    <Compile Include="Near\NProductRepository.cs" />
     <Compile Include="Personal\CollectionInfoRepository.cs" />
     <Compile Include="Product\ProductInfoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

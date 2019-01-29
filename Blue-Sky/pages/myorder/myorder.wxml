@@ -1,5 +1,8 @@
 <!--pages/myorder/myorder.wxml-->
 <text>所有订单</text>
+<view wx:for="{{allorders}}" wx:key="item.ID">
+<text>{{item.OrderProductName}}</text>
+</view>
 <text>代付款</text>
 <text>待支付</text>
 <text>待收货</text>

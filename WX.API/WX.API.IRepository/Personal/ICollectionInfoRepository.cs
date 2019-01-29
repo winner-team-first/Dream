@@ -14,34 +14,34 @@ namespace WX.API.IRepository.Personal
         /// </summary>
         /// <param name="pid"></param>
         /// <returns></returns>
-        List<CollectionInfo> CollectionInfoShow();
+        List<CollectionInfo> GetCollectionInfoList();
         /// <summary>
         /// 所有订单
         /// </summary>
         /// <returns></returns>
-        List<Allorders> AllordersShow();
+        List<Allorders> GetAllorders();
         /// <summary>
         /// 新订单
         /// </summary>
-        List<Allorders> NewOrdersShow(string pid);
+        List<Allorders> GetNewOrders(string id);
         /// <summary>
         /// Distribution配送中
         /// </summary>
-        List<Allorders> DistributionShow(string pid);
+        List<Allorders> GetDistribution(string id);
         /// <summary>
         /// Finish已完成
         /// </summary>
-        List<Allorders> FinishShow(string pid);
+        List<Allorders> GetFinishList(string id);
 
         /// <summary>
         /// Cancel已取消
         /// </summary>
-        List<Allorders> CancelShow(string pid);
+        List<Allorders> GetCancel(string id);
         /// <summary>
         /// 取消收藏
         /// </summary>
         /// <param name="pid"></param>
         /// <returns></returns>
-        int Delete_CollectionInfoShow(string pid);
+        int GetDeleteById(string id);
     }
 }

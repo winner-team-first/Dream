@@ -57,6 +57,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WX.API.Common\WX.API.Common.csproj">
+      <Project>{66af3023-dab1-4748-8b3f-74df5ff6e472}</Project>
+      <Name>WX.API.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WX.API.IRepository\WX.API.IRepository.csproj">
       <Project>{58cc7a66-23e3-45fe-aeed-fe1c2d2b4d56}</Project>
       <Name>WX.API.IRepository</Name>

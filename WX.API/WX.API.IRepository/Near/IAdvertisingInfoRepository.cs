@@ -13,9 +13,6 @@ namespace WX.API.IRepository.Near
         /// 显示广告
         /// </summary>
         /// <returns></returns>
-        List<AdvertisingInfo> ShowAdvertisingInfo();
-
-       
-
+        List<AdvertisingInfo> GetAdvertisingList();
     }
 }

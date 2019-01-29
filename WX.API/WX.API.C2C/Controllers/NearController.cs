@@ -13,6 +13,8 @@ namespace WX.API.C2C.Controllers
     {
         //广告属性
         public IAdvertisingInfoRepository AdvertisingRepository { set; get; }
+
+        //Top-5商品
         public INProductRepository NProductRepository { set; get; }
 
 

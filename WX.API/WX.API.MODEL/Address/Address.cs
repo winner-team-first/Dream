@@ -26,17 +26,17 @@ namespace WX.API.MODEL.Address
         /// <summary>
         /// 省级ID
         /// </summary>
-        public int ProvinceID { get; set; }
+        public string Province { get; set; }
 
         /// <summary>
         /// 市级ID
         /// </summary>
-        public int CityID { get; set; }
+        public string City { get; set; }
 
         /// <summary>
         /// 县级ID
         /// </summary>
-        public int CountyID { get; set; }
+        public string County { get; set; }
 
         /// <summary>
         /// 详细地址

@@ -40,5 +40,24 @@ namespace WX.API.C2C.Controllers
             int i = Addr.Delete(id);
             return i;
         }
+
+        /// <summary>
+        /// 地址添加
+        /// </summary>
+        /// <param name="Consignee"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Province"></param>
+        /// <param name="City"></param>
+        /// <param name="County"></param>
+        /// <param name="DetailedAddress"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ActionName("Add")]
+        public int Add(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress)
+        {
+            int i = Addr.Add(Consignee, Phone, Province, City, County, DetailedAddress);
+            
+            return i;
+        }
     }
 }

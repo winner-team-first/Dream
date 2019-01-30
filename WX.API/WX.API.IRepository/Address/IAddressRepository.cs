@@ -21,6 +21,17 @@ namespace WX.API.IRepository.Address
         /// </summary>
         int Delete(int id);
 
-        
+        /// <summary>
+        /// 地址添加
+        /// </summary>
+        /// <param name="Consignee"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Province"></param>
+        /// <param name="City"></param>
+        /// <param name="County"></param>
+        /// <param name="DetailedAddress"></param>
+        /// <param name="Code"></param>
+        /// <returns></returns>
+        int Add(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress);
     }
 }

@@ -48,7 +48,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                return con.Query<Allorders>("select a.OrderAddrPerson '收件人', a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + id).ToList();
+                return con.Query<Allorders>("select a.OrderAddrPerson, a.ID ,b.OrderProductName,b.OrderProductTotalPrice,b.OrderProductNum , b.OrderProductPrice, a.OrderState,c.ProductImage from OrderInfo a, OrderProductInfo b, ProductInfo c where a.OrderState = " + id).ToList();
             }
         }
 

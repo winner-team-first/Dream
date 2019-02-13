@@ -17,7 +17,6 @@ namespace WX.API.C2C.Controllers
         //Top-5商品
         public INProductRepository NProductRepository { set; get; }
 
-
         /// <summary>
         /// 显示广告
         /// </summary>
@@ -31,8 +30,6 @@ namespace WX.API.C2C.Controllers
             return advertisingInfoList;
         }
 
-
-
         /// <summary>
         /// 显示产品
         /// </summary>
@@ -44,7 +41,6 @@ namespace WX.API.C2C.Controllers
             List<ProductInfo> productList = NProductRepository.GetProductList();
             return productList;
         }
-
 
         /// <summary>
         /// 获得经纬度距离
@@ -68,7 +64,6 @@ namespace WX.API.C2C.Controllers
             distance = Math.Round(distance * 10000) / 10000;
             return distance;
         }
-
 
     }
 }

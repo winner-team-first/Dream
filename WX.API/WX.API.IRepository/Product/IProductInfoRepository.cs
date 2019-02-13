@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WX.API.MODEL.Product;
+using WX.API.Model.Product;
 
 namespace WX.API.IRepository.Product
 {

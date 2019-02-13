@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WX.API.IRepository.Near;
-using WX.API.MODEL.Near;
+using WX.API.Model.Near;
 using Dapper;
 using System.Data;
 using System.Configuration;

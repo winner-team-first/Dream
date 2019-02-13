@@ -7,8 +7,8 @@
     <ProjectGuid>{6DC7CC88-1247-4CBB-814E-7353D577BA39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WX.API.MODEL</RootNamespace>
-    <AssemblyName>WX.API.MODEL</AssemblyName>
+    <RootNamespace>WX.API.Model</RootNamespace>
+    <AssemblyName>WX.API.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

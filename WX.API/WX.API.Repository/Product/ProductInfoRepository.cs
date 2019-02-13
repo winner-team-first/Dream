@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WX.API.IRepository.Product;
-using WX.API.MODEL.Product;
+using WX.API.Model.Product;
 using Dapper;
 using MySql.Data.MySqlClient;
 using WX.API.Common;

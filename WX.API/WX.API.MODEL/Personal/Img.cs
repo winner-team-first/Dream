@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WX.API.MODEL.Personal
+namespace WX.API.Model.Personal
 {
     /// <summary>
     /// 商品图片表

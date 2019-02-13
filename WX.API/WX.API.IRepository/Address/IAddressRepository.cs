@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using WX.API.MODEL.Address;
+using WX.API.Model.Address;
 
 namespace WX.API.IRepository.Address
 {
@@ -14,7 +14,7 @@ namespace WX.API.IRepository.Address
         /// 地址显示
         /// </summary>
         /// <returns></returns>
-        List<WX.API.MODEL.Address.Address> GetAddressList();
+        List<WX.API.Model.Address.Address> GetAddressList();
 
         /// <summary>
         /// 根据ID 删除地址

@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 using System.Web;
-using WX.API.MODEL.Address;
+using WX.API.Model.Address;
 using WX.API.IRepository.Address;
 using WX.API.Repository.Address;
 
@@ -22,7 +22,7 @@ namespace WX.API.C2C.Controllers
         /// <returns></returns>
         [HttpGet]
         [ActionName("GetAddressList")]
-        public List<MODEL.Address.Address> GetAddressList()
+        public List<WX.API.Model.Address.Address> GetAddressList()
         {
             var addressList = Addr.GetAddressList();
             return addressList;

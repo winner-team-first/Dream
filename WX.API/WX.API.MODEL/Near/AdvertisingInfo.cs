@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WX.API.MODEL.Near
+namespace WX.API.Model.Near
 {
     public class AdvertisingInfo
     {

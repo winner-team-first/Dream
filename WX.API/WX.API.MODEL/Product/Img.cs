@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WX.API.MODEL.Product
+namespace WX.API.Model.Product
 {
     public  class Img
     {

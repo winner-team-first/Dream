@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WX.API.IRepository.Product;
-using WX.API.MODEL.Product;
+using WX.API.Model.Product;
 
 namespace WX.API.C2C.Controllers
 {
@@ -43,6 +43,16 @@ namespace WX.API.C2C.Controllers
                 productInfo.ImgList.Add(imgList[i]);
             }
             return productInfo;
+        }
+        /// <summary>
+        /// 根据分类ID查询商品信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public List<ProductInfo> GetProductByClassfiyID(int ClassfiyId)
+        {
+            var productList = productInfoDal.GetProductByClassfiyID(ClassfiyId);
+            return productList;
         }
     }
 }

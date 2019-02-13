@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WX.API.MODEL.Near;
+using WX.API.Model.Near;
 
 namespace WX.API.IRepository.Near
 {

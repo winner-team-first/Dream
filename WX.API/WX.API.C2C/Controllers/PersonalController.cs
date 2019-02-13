@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace WX.API.C2C.Controllers
 {
-    using MODEL.Personal;
+    using WX.API.Model.Personal;
     using WX.API.IRepository.Personal;
 
     public class PersonalController : ApiController

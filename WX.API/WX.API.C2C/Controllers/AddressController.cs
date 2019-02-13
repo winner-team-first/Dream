@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 using System.Web;
-using WX.API.MODEL.Address;
+using WX.API.Model.Address;
 using WX.API.IRepository.Address;
 using WX.API.Repository.Address;
 
@@ -22,7 +22,7 @@ namespace WX.API.C2C.Controllers
         /// <returns></returns>
         [HttpGet]
         [ActionName("GetAddressList")]
-        public List<MODEL.Address.Address> GetAddressList()
+        public List<WX.API.Model.Address.Address> GetAddressList()
         {
             var addressList = Addr.GetAddressList();
             return addressList;
@@ -38,6 +38,25 @@ namespace WX.API.C2C.Controllers
         public int Delete(int id)
         {
             int i = Addr.Delete(id);
+            return i;
+        }
+
+        /// <summary>
+        /// 地址添加
+        /// </summary>
+        /// <param name="Consignee"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Province"></param>
+        /// <param name="City"></param>
+        /// <param name="County"></param>
+        /// <param name="DetailedAddress"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ActionName("Add")]
+        public int Add(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress)
+        {
+            int i = Addr.Add(Consignee, Phone, Province, City, County, DetailedAddress);
+            
             return i;
         }
     }

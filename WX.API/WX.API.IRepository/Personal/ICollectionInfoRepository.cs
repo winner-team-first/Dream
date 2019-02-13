@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WX.API.IRepository.Personal
 {
-    using WX.API.MODEL.Personal;
+    using WX.API.Model.Personal;
     public interface ICollectionInfoRepository
     {
         /// <summary>

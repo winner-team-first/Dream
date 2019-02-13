@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WX.API.MODEL.Car;
+using WX.API.Model.Car;
 using WX.API.IRepository.Car;
 
 namespace WX.API.C2C.Controllers

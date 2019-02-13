@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace WX.API.MODEL.Car
+namespace WX.API.Model.Car
 {
     public class ShopCar
     {

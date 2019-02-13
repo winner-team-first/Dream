@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WX.API.MODEL.Product;
+using WX.API.Model.Product;
 
 namespace WX.API.IRepository.Product
 {
@@ -14,12 +14,19 @@ namespace WX.API.IRepository.Product
         /// </summary>
         /// <returns></returns>
         List<ProductInfo> GetProductInfo();
+
         /// <summary>
         /// 根据商品ID查询所有详情图片
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
         List<Img> GetImgByProductID(int ProductID);
+
+        /// <summary>
+        /// 根据分类ID查询商品
+        /// </summary>
+        /// <returns></returns>
+        List<ProductInfo> GetProductByClassfiyID(int ClassfiyId);
 
     }
    

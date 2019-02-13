@@ -28,7 +28,6 @@
                     <view class="section_cont_price">价格：￥{{item.ProductPrice}}</view>
                     <text>{{item.ProductStock}}</text>
                 </view>
-
                 <!--book-->
                 <view class="section_book" bindtap="deletesc" data-ids="{{item.ID}}">取消收藏
                 </view>

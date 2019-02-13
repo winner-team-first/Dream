@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WX.API.MODEL.Car;
+using WX.API.Model.Car;
 
 namespace WX.API.IRepository.Car
 {

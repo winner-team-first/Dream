@@ -50,7 +50,7 @@ namespace WX.API.C2C
             container.RegisterType<AdvertisingInfoRepository>().As<IAdvertisingInfoRepository>();//前面是Repository里面的方法 后面写他所继承的借口
             container.RegisterType<ShopCarRepository>().As<IShopCarRepoitory>();
             container.RegisterType<ProductInfoRepository>().As<IProductInfoRepository>();
-            container.RegisterType<CollectionInfoRepository>().As<ICollectionInfoRepository>();
+            container.RegisterType<CollectionInfoRepository>().As<IRepository.Personal.ICollectionInfoRepository>();
             container.RegisterType<AddressRepository>().As<IAddressRepository>();
             container.RegisterType<NProductRepository>().As<INProductRepository>();
         }

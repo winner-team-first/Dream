@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     var that=this;
     wx.request({
-      url: 'http://localhost:61966/api/Personal/CollectionInfoShow',
+      url: 'http://localhost:61966/api/Personal/GetCollectionInfoList',
       method:'get',
       success:function (res) {
         console.log(res.data)
@@ -79,9 +79,9 @@ var that=this;
   var getid = e.currentTarget.dataset.ids;
   console.log(getid);
   wx.request({
-    url: 'http://localhost:61966/api/Personal/Delete_CollectionInfoShow',
+    url: 'http://localhost:61966/api/Personal/GetDeleteById',
     method:'get',
-    data: { pid: getid},
+    data: { id: getid},
     success:function (res)
     { 
       if(res.data>0)
@@ -103,11 +103,4 @@ var that=this;
     }
   })
 }
-
-
-
-
-
-
-
 })

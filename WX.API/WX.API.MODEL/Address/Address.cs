@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace WX.API.MODEL.Address
+namespace WX.API.Model.Address
 {
     public class Address
     {

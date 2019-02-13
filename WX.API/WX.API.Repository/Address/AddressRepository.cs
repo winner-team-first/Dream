@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using WX.API.IRepository.Address;
-using WX.API.MODEL.Address;
+using WX.API.Model.Address;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System.Configuration;
@@ -52,13 +52,18 @@ namespace WX.API.Repository.Address
         /// 地址信息显示 
         /// </summary>
         /// <returns></returns>
-        public List<MODEL.Address.Address> GetAddressList()
+        public List<WX.API.Model.Address.Address> GetAddressList()
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
             {
-                List<MODEL.Address.Address> addressList = conn.Query<MODEL.Address.Address>("select * from Address").ToList();
+                List<WX.API.Model.Address.Address> addressList = conn.Query<WX.API.Model.Address.Address>("select * from Address").ToList();
                 return addressList;
             }
+        }
+
+        List<Model.Address.Address> IAddressRepository.GetAddressList()
+        {
+            throw new NotImplementedException();
         }
     }
 }

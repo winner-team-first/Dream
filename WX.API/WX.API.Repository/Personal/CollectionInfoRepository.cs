@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WX.API.Repository.Personal
 {
     using WX.API.IRepository.Personal;
-    using MODEL.Personal;
+    using WX.API.Model.Personal;
     using Dapper;
     using System.Data;
     using MySql.Data.MySqlClient;

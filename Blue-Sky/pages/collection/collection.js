@@ -79,7 +79,7 @@ var that=this;
   var getid = e.currentTarget.dataset.ids;
   console.log(getid);
   wx.request({
-    url: 'http://localhost:61966/api/Personal/GetDeleteById',
+    url: 'http://localhost:61966/api/Personal/DeleteById',
     method:'get',
     data: { id: getid},
     success:function (res)

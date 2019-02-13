@@ -191,7 +191,7 @@ Page({
     var that=this;
     var getid=e.currentTarget.dataset.ids;
     wx.request({
-      url: 'http://localhost:61966/api/Personal/GetNewOrders',
+      url: 'http://localhost:61966/api/Personal/GetNewOrdersStatus',
       method:'get',
       data:{id:getid},
       success:function(res){
@@ -200,5 +200,34 @@ Page({
         })
       }
     })
+  },
+  //删除
+  delorder:function(){
+  var that=this;
+  var getid=e.currentTarget.dataset.ids;
+  console.log(getid);
+  wx.request({
+    url: 'http://localhost:61966/api/Personal/GetDeleteById',
+    method:'get',
+    data:{id:getid},
+    success:function (res){
+      if(res.data>0)
+      {
+      wx.showToast({
+        title: '删除成功',
+        icon:'success',
+        duration:2000
+      })
+      that.onLoad();
+      }
+      else{
+        wx.showToast({
+          title: '删除失败',
+          icon:'default',
+          duration:2000
+        })
+      }
+    }
+  })
   }
 })

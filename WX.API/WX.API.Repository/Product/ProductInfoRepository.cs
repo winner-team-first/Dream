@@ -27,6 +27,7 @@ namespace WX.API.Repository.Product
                 return productList;
             }
         }
+
         /// <summary>
         /// 根据商品ID查询所有商品详情图片
         /// </summary>
@@ -40,6 +41,7 @@ namespace WX.API.Repository.Product
                 return imgList;
             }
         }
+
         /// <summary>
         /// 根据分类ID查询商品信息
         /// </summary>

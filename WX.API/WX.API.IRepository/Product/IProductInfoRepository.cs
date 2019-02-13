@@ -14,12 +14,14 @@ namespace WX.API.IRepository.Product
         /// </summary>
         /// <returns></returns>
         List<ProductInfo> GetProductInfo();
+
         /// <summary>
         /// 根据商品ID查询所有详情图片
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
         List<Img> GetImgByProductID(int ProductID);
+
         /// <summary>
         /// 根据分类ID查询商品
         /// </summary>

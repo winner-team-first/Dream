@@ -24,28 +24,33 @@ namespace WX.API.Repository.Car
             }
         }
         //点击按钮加减商品
-        public void Button(int count, int id)
+        public int UpdateCount(int count, int id)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                con.Execute("update ShopCar set ProductCount = " + count + " where ID = " + id + " ");
+                var i =con.Execute("update ShopCar set ProductCount = " + count + " where ID = " + id + " ");
+                return i;
             }
         }
         //购物车删除商品
-        public void DeleteProduct(string id)
+        public int DeleteProduct(string id)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                con.Execute("delete from shopcar where ID in ("+id+")");
+               var i =  con.Execute("delete from shopcar where ID in ("+id+")");
+                return i;
             }
         }
         //修改状态
-        public void UpdateState(int id,int state)
+        public int UpdateState(int id,int state)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                con.Execute("update shopcar set productstate = "+state+" where ID ="+id+"");
+               var i = con.Execute("update shopcar set productstate = "+state+" where ID ="+id+"");
+                return i;
             }
         }
+
+        
     }
 }

@@ -13,6 +13,10 @@ namespace WX.API.C2C.Controllers
     {
         public IShopCarRepoitory ShopCarRepoitory { get; set; }
 
+        /// <summary>
+        /// 显示购物车列表
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ActionName("GetShopCarList")]
         public List<ShopCar> GetShopCarList()
@@ -20,26 +24,38 @@ namespace WX.API.C2C.Controllers
             List<ShopCar> list = ShopCarRepoitory.GetShopCarList();
             return list; 
         }
-
+        /// <summary>
+        /// 点击按钮改变数量
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="id"></param>
         [HttpPost]
         [ActionName("Button")]
-        public void Button(int count, int id)
+        public int UpdateCount(int count, int id)
         {
-            ShopCarRepoitory.Button( count, id);
-        }
+           return ShopCarRepoitory.UpdateCount( count, id);
 
+        }
+        /// <summary>
+        /// 删除购物车中商品
+        /// </summary>
+        /// <param name="id"></param>
         [HttpPost]
         [ActionName("DeleteProduct")]
-        public void DeleteProduct(string id)
+        public int DeleteProduct(string id)
         {
-            ShopCarRepoitory.DeleteProduct(id);
+            return ShopCarRepoitory.DeleteProduct(id);
         }
-
+        /// <summary>
+        /// 点击修改选中状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="state"></param>
         [HttpPost]
         [ActionName("UpdateState")]
-        void UpdateState(int id, int state)
+        public int UpdateState(int id, int state)
         {
-            ShopCarRepoitory.UpdateState(id,state);
+           return  ShopCarRepoitory.UpdateState(id,state);
         }
     }
 }

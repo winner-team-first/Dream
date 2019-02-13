@@ -50,9 +50,9 @@
     <Compile Include="Car\IShopCarRepoitory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WX.API.MODEL\WX.API.MODEL.csproj">
+    <ProjectReference Include="..\WX.API.MODEL\WX.API.Model.csproj">
       <Project>{6dc7cc88-1247-4cbb-814e-7353d577ba39}</Project>
-      <Name>WX.API.MODEL</Name>
+      <Name>WX.API.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

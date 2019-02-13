@@ -40,5 +40,17 @@ namespace WX.API.Repository.Product
                 return imgList;
             }
         }
+        /// <summary>
+        /// 根据分类ID查询商品信息
+        /// </summary>
+        /// <returns></returns>
+        public List<ProductInfo> GetProductByClassfiyID(int ClassfiyId)
+        {
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            {
+                var ProductList = conn.Query<ProductInfo>("SELECT * from productinfo WHERE ClassifyID =" + ClassfiyId + "").ToList();
+                return ProductList;
+            }
+        }
     }
 }

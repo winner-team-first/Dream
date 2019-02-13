@@ -20,6 +20,11 @@ namespace WX.API.IRepository.Product
         /// <param name="ProductID"></param>
         /// <returns></returns>
         List<Img> GetImgByProductID(int ProductID);
+        /// <summary>
+        /// 根据分类ID查询商品
+        /// </summary>
+        /// <returns></returns>
+        List<ProductInfo> GetProductByClassfiyID(int ClassfiyId);
 
     }
    

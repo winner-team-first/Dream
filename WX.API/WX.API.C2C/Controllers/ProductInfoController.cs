@@ -44,5 +44,15 @@ namespace WX.API.C2C.Controllers
             }
             return productInfo;
         }
+        /// <summary>
+        /// 根据分类ID查询商品信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public List<ProductInfo> GetProductByClassfiyID(int ClassfiyId)
+        {
+            var productList = productInfoDal.GetProductByClassfiyID(ClassfiyId);
+            return productList;
+        }
     }
 }

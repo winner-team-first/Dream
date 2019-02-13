@@ -9,6 +9,7 @@ namespace WX.API.C2C.Controllers
 {
     using WX.API.Model.Personal;
     using WX.API.IRepository.Personal;
+
     public class PersonalController : ApiController
     {
         public ICollectionInfoRepository CollectionInfoRepository { get; set; }
@@ -35,38 +36,16 @@ namespace WX.API.C2C.Controllers
             return getallorders;
         }
         /// <summary>
-        /// 新订单
+        /// 订单状态
         /// </summary>
-        public List<Allorders> GetNewOrders(string id)
+        [ActionName("GetNewOrders")]
+        [HttpGet]
+        public List<Allorders> GetNewOrdersStatus(string id)
         {
-            var getnewOrders =  CollectionInfoRepository.GetNewOrders(id);
+            var getnewOrders =  CollectionInfoRepository.GetNewOrdersStatus(id);
             return getnewOrders;
         }
-        /// <summary>
-        /// Distribution配送中
-        /// </summary>
-        public List<Allorders> GetDistribution(string id)
-        {
-            var getdistribution =  CollectionInfoRepository.GetDistribution(id);
-            return getdistribution;
-        }
 
-        /// <summary>
-        /// Finish已完成
-        /// </summary>
-        public List<Allorders> GetFinishList(string id)
-        {
-            var getfinishlist= CollectionInfoRepository.GetFinishList(id);
-            return getfinishlist;
-        }
-        /// <summary>
-        /// Cancel已取消
-        /// </summary>
-        public List<Allorders> GetCancel(string id)
-        {
-            var cncelhowlist= CollectionInfoRepository.GetCancel(id);
-            return cncelhowlist;
-        }
         /// <summary>
         /// 取消收藏
         /// </summary>
@@ -75,10 +54,21 @@ namespace WX.API.C2C.Controllers
         /// 
         [ActionName("GetDeleteById")]
         [HttpGet]
-        public int GetDeleteById(string id)
+        public int DeleteById(string id)
         {
-            var getid= CollectionInfoRepository.GetDeleteById(id);
-            return getid;
+            var count= CollectionInfoRepository.DeleteById(id);
+            return count;
+        }
+
+        /// <summary>
+        /// 删除订单
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int Delete(string id)
+        {
+            var count = CollectionInfoRepository.Delete(id);
+            return count;
         }
     }
 }

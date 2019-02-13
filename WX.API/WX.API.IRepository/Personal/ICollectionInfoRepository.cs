@@ -21,27 +21,20 @@ namespace WX.API.IRepository.Personal
         /// <returns></returns>
         List<Allorders> GetAllorders();
         /// <summary>
-        /// 新订单
+        /// 订单状态
         /// </summary>
-        List<Allorders> GetNewOrders(string id);
-        /// <summary>
-        /// Distribution配送中
-        /// </summary>
-        List<Allorders> GetDistribution(string id);
-        /// <summary>
-        /// Finish已完成
-        /// </summary>
-        List<Allorders> GetFinishList(string id);
-
-        /// <summary>
-        /// Cancel已取消
-        /// </summary>
-        List<Allorders> GetCancel(string id);
+        List<Allorders> GetNewOrdersStatus(string id);
         /// <summary>
         /// 取消收藏
         /// </summary>
         /// <param name="pid"></param>
         /// <returns></returns>
-        int GetDeleteById(string id);
+        int DeleteById(string id);
+        /// <summary>
+        /// 删除订单
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int Delete(string id);
     }
 }

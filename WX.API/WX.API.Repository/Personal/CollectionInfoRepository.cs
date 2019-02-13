@@ -13,6 +13,7 @@ namespace WX.API.Repository.Personal
     using MySql.Data.MySqlClient;
     using System.Configuration;
     using WX.API.Common;
+
     public class CollectionInfoRepository : IRepository.Personal.ICollectionInfoRepository
     {
 
@@ -25,7 +26,9 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                return con.Query<CollectionInfo>("select b.ID, a.ProductName,a.ProductPrice, a.ProductStock,a.ProductImage from ProductInfo a,Collection b where a.ID=b.GoodsID").ToList();
+                var sql = "select b.ID, a.ProductName,a.ProductPrice, a.ProductStock,a.ProductImage from ProductInfo a,Collection b where a.ID=b.GoodsID";
+                var collectionlist = con.Query<CollectionInfo>(sql).ToList();
+                return collectionlist;
             }
         }
 
@@ -37,51 +40,22 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                return con.Query<Allorders>("select a.ID ,b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,c.ProductImage  from OrderInfo a, OrderProductInfo b, ProductInfo c ").ToList();
+                var sql = "select a.ID ,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,c.ProductImage  from OrderInfo a, OrderProductInfo b, ProductInfo c ";
+                var orderlist = con.Query<Allorders>(sql).ToList();
+                return orderlist;
             }
         }
 
         /// <summary>
-        /// 新订单
+        /// 订单状态
         /// </summary>
-        public List<Allorders> GetNewOrders(string id)
+        public List<Allorders> GetNewOrdersStatus(string id)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                return con.Query<Allorders>("select a.OrderAddrPerson, a.ID ,b.OrderProductName,b.OrderProductTotalPrice,b.OrderProductNum , b.OrderProductPrice, a.OrderState,c.ProductImage from OrderInfo a, OrderProductInfo b, ProductInfo c where a.OrderState = " + id).ToList();
-            }
-        }
-
-        /// <summary>
-        /// Distribution配送中
-        /// </summary>
-        public List<Allorders> GetDistribution(string id)
-        {
-            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
-            {
-                return con.Query<Allorders>("select a.OrderAddrPerson '收件人',  a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + id).ToList();
-            }
-        }
-
-        /// <summary>
-        /// Finish已完成
-        /// </summary>
-        public List<Allorders> GetFinishList(string id)
-        {
-            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
-            {
-                return con.Query<Allorders>("select a.OrderAddrPerson '收件人',  a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + id).ToList();
-            }
-        }
-
-        /// <summary>
-        /// Cancel已取消
-        /// </summary>
-        public List<Allorders> GetCancel(string id)
-        {
-            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
-            {
-                return con.Query<Allorders>("select a.OrderAddrPerson '收件人',  a.ID 'ID',b.OrderProductName '名称',b.OrderProductTotalPrice '单价',b.OrderProductNum '数量', b.OrderProductPrice '总价', a.OrderState '状态',c.ProductImage '图片' from OrderInfo a, OrderProductInfo b, ProductInfo cwhere a.OrderState = " + id).ToList();
+                var sql = "select a.OrderAddrPerson, a.ID ,b.OrderProductName,b.OrderProductTotalPrice,b.OrderProductNum , b.OrderProductPrice, a.OrderState,c.ProductImage from OrderInfo a, OrderProductInfo b, ProductInfo c where a.OrderState = " + id;
+                var allordersList = con.Query<Allorders>(sql).ToList();
+                return allordersList;
             }
         }
 
@@ -89,12 +63,27 @@ namespace WX.API.Repository.Personal
         /// 取消收藏
         /// </summary>
         /// <returns></returns>
-        public int GetDeleteById(string id)
+        public int DeleteById(string id)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
                 string sql = "delete from Collection where ID=" + id;
                 return con.Execute(sql);
+            }
+        }
+
+        /// <summary>
+        /// 删除订单
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int Delete(string id)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+                var sql = $"delete from OrderInfo where UserID={id}";
+                int i= con.Execute(sql);
+                return i;
             }
         }
     }

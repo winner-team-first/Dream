@@ -37,7 +37,7 @@ namespace WX.API.Repository.Product
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                var imgList= conn.Query<Img>("select * from img where ProductID=" + ProductID + "").ToList();
+                var imgList= conn.Query<Img>("select * from img where ProductID=" + ProductID ).ToList();
                 return imgList;
             }
         }
@@ -50,8 +50,8 @@ namespace WX.API.Repository.Product
         {
             using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                var ProductList = conn.Query<ProductInfo>("SELECT * from productinfo WHERE ClassifyID =" + ClassfiyId + "").ToList();
-                return ProductList;
+                var productList = conn.Query<ProductInfo>("SELECT * from productinfo WHERE ClassifyID =" + ClassfiyId ).ToList();
+                return productList;
             }
         }
     }

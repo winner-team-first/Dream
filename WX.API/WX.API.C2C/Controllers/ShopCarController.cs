@@ -14,17 +14,32 @@ namespace WX.API.C2C.Controllers
         public IShopCarRepoitory ShopCarRepoitory { get; set; }
 
         [HttpGet]
-        [ActionName("Show")]
-        public List<ShopCar> Show()
+        [ActionName("GetShopCarList")]
+        public List<ShopCar> GetShopCarList()
         {
             List<ShopCar> list = ShopCarRepoitory.GetShopCarList();
             return list; 
         }
+
         [HttpPost]
         [ActionName("Button")]
         public void Button(int count, int id)
         {
             ShopCarRepoitory.Button( count, id);
+        }
+
+        [HttpPost]
+        [ActionName("DeleteProduct")]
+        public void DeleteProduct(string id)
+        {
+            ShopCarRepoitory.DeleteProduct(id);
+        }
+
+        [HttpPost]
+        [ActionName("UpdateState")]
+        void UpdateState(int id, int state)
+        {
+            ShopCarRepoitory.UpdateState(id,state);
         }
     }
 }

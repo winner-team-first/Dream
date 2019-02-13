@@ -14,6 +14,7 @@ namespace WX.API.Repository.Car
 {
     public class ShopCarRepository : IShopCarRepoitory
     {
+        //获取购物车商品信息
         public List<ShopCar> GetShopCarList()
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
@@ -22,6 +23,7 @@ namespace WX.API.Repository.Car
                 return ShopCarList;
             }
         }
+        //点击按钮加减商品
         public void Button(int count, int id)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
@@ -29,14 +31,21 @@ namespace WX.API.Repository.Car
                 con.Execute("update ShopCar set ProductCount = " + count + " where ID = " + id + " ");
             }
         }
-        public List<ShopCar> Lost()
+        //购物车删除商品
+        public void DeleteProduct(string id)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                return con.Query<ShopCar>("select a.ShopCarId,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ProductID where UID = 2").ToList();
+                con.Execute("delete from shopcar where ID in ("+id+")");
             }
         }
-
-        
+        //修改状态
+        public void UpdateState(int id,int state)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
+            {
+                con.Execute("update shopcar set productstate = "+state+" where ID ="+id+"");
+            }
+        }
     }
 }

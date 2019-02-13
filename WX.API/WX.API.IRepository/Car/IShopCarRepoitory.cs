@@ -12,5 +12,9 @@ namespace WX.API.IRepository.Car
         List<ShopCar> GetShopCarList();
 
         void Button(int count, int id);
+
+        void DeleteProduct(string id);
+
+        void UpdateState(int id, int state);
     }
 }

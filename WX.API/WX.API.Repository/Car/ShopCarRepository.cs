@@ -19,8 +19,8 @@ namespace WX.API.Repository.Car
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                var ShopCarList = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2").ToList();
-                return ShopCarList;
+                var shopCarList = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2").ToList();
+                return shopCarList;
             }
         }
         //点击按钮加减商品
@@ -50,7 +50,26 @@ namespace WX.API.Repository.Car
                 return i;
             }
         }
+        /// <summary>
+        /// 获取选中商品信息
+        /// </summary>
+        /// <returns></returns>
+        public List<ShopCar> GetProductState()
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
+            {
+                var productState = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2 and a.productstate > 0 ").ToList();
+                return productState;
+            }
+        }
 
-        
+        public List<UserAddress> GetAddress()
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
+            {
+                var address = con.Query<UserAddress>("select * from address where userid =2 and defaultaddress = 1 ").ToList();
+                return address;
+            }
+        }
     }
 }

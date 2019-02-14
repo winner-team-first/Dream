@@ -30,7 +30,7 @@ namespace WX.API.C2C.Controllers
         /// <param name="count"></param>
         /// <param name="id"></param>
         [HttpPost]
-        [ActionName("Button")]
+        [ActionName("UpdateCount")]
         public int UpdateCount(int count, int id)
         {
            return ShopCarRepoitory.UpdateCount( count, id);
@@ -55,7 +55,19 @@ namespace WX.API.C2C.Controllers
         [ActionName("UpdateState")]
         public int UpdateState(int id, int state)
         {
-           return  ShopCarRepoitory.UpdateState(id,state);
+           return ShopCarRepoitory.UpdateState(id,state);
+        }
+        [HttpGet]
+        [ActionName("GetProductState")]
+        public List<ShopCar> GetProductState()
+        {
+            return ShopCarRepoitory.GetProductState();
+        }
+        [HttpGet]
+        [ActionName("GetAddress")]
+        public List<UserAddress> GetAddress()
+        {
+            return ShopCarRepoitory.GetAddress();
         }
     }
 }

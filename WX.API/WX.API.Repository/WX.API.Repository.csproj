@@ -48,10 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address\AddressRepository.cs" />
+    <Compile Include="Addresss\AddressRepository.cs" />
     <Compile Include="Car\ShopCarRepository.cs" />
     <Compile Include="Near\AdvertisingInfoRepository.cs" />
     <Compile Include="Near\NProductRepository.cs" />
+    <Compile Include="Near\ShopInfoRepository.cs" />
     <Compile Include="Personal\CollectionInfoRepository.cs" />
     <Compile Include="Product\ProductInfoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

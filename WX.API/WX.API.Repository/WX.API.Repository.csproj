@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address\AddressRepository.cs" />
+    <Compile Include="Addresss\AddressRepository.cs" />
     <Compile Include="Car\ShopCarRepository.cs" />
     <Compile Include="Near\AdvertisingInfoRepository.cs" />
     <Compile Include="Near\NProductRepository.cs" />

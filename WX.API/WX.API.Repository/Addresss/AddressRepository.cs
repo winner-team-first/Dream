@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using WX.API.IRepository.Address;
-using WX.API.Model.Address;
+using WX.API.IRepository.Addresss;
+using WX.API.Model.Addresss;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System.Configuration;
@@ -49,21 +49,31 @@ namespace WX.API.Repository.Address
         }
 
         /// <summary>
-        /// 地址信息显示 
+        /// 根据ID查询地址信息用来反填
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public List<WX.API.Model.Address.Address> GetAddressList()
+        public Model.Addresss.Address GetAddressById(int id)
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
             {
-                List<WX.API.Model.Address.Address> addressList = conn.Query<WX.API.Model.Address.Address>("select * from Address").ToList();
-                return addressList;
+                var sql = "select * from Address where id = " + id;
+                var result = conn.Query<Model.Addresss.Address>(sql).FirstOrDefault();
+                return result;
             }
         }
 
-        List<Model.Address.Address> IAddressRepository.GetAddressList()
+        /// <summary>
+        /// 地址信息显示 
+        /// </summary>
+        /// <returns></returns>
+        public List<Model.Addresss.Address> GetAddressList()
         {
-            throw new NotImplementedException();
+            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
+            {
+                List<Model.Addresss.Address> addressList = conn.Query<Model.Addresss.Address>("select * from Address").ToList();
+                return addressList;
+            }
         }
     }
 }

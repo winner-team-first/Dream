@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address\Address.cs" />
+    <Compile Include="Addresss\Address.cs" />
     <Compile Include="Near\AdvertisingInfo.cs" />
     <Compile Include="Near\ProductInfo.cs" />
     <Compile Include="Personal\Allorders.cs" />

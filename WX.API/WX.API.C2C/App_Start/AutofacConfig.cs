@@ -16,7 +16,7 @@ using WX.API.IRepository.Product;
 using WX.API.Repository.Product;
 using WX.API.Repository.Personal;
 using WX.API.IRepository.Personal;
-using WX.API.IRepository.Address;
+using WX.API.IRepository.Addresss;
 using WX.API.Repository.Address;
 
 namespace WX.API.C2C

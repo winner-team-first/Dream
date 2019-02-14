@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using WX.API.Model.Address;
+using WX.API.Model.Addresss;
 
-namespace WX.API.IRepository.Address
+namespace WX.API.IRepository.Addresss
 {
     public interface IAddressRepository
     {
@@ -14,7 +14,7 @@ namespace WX.API.IRepository.Address
         /// 地址显示
         /// </summary>
         /// <returns></returns>
-        List<WX.API.Model.Address.Address> GetAddressList();
+        List<Address> GetAddressList();
 
         /// <summary>
         /// 根据ID 删除地址
@@ -33,5 +33,12 @@ namespace WX.API.IRepository.Address
         /// <param name="Code"></param>
         /// <returns></returns>
         int Add(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress);
+
+        /// <summary>
+        /// 根据ID查询地址信息用来反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Address GetAddressById(int id);
     }
 }

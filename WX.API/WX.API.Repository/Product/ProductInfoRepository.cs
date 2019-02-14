@@ -9,6 +9,7 @@ using WX.API.Model.Product;
 using Dapper;
 using MySql.Data.MySqlClient;
 using WX.API.Common;
+using WX.API.Model.Car;
 
 namespace WX.API.Repository.Product
 {
@@ -33,11 +34,11 @@ namespace WX.API.Repository.Product
         /// </summary>
         /// <param name="ProductID"></param>
         /// <returns></returns>
-        public List<Img> GetImgByProductID(int ProductID)
+        public List<Img> GetImgByProductID(int productID)
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                var imgList= conn.Query<Img>("select * from img where ProductID=" + ProductID ).ToList();
+                var imgList= conn.Query<Img>("select * from img where ProductID=" + productID ).ToList();
                 return imgList;
             }
         }
@@ -45,14 +46,46 @@ namespace WX.API.Repository.Product
         /// <summary>
         /// 根据分类ID查询商品信息
         /// </summary>
-        /// <returns></returns>
-        public List<ProductInfo> GetProductByClassfiyID(int ClassfiyId)
+        /// <returns></returns
+        public List<ProductInfo> GetProductByClassfiyID(int classfiyId)
         {
             using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                var productList = conn.Query<ProductInfo>("SELECT * from productinfo WHERE ClassifyID =" + ClassfiyId ).ToList();
+                var productList = conn.Query<ProductInfo>("SELECT * from productinfo WHERE ClassifyID =" + classfiyId ).ToList();
                 return productList;
             }
         }
+
+        /// <summary>
+        /// 根据名称查询商品信息
+        /// </summary>
+        /// <param name="proName"></param>
+        /// <returns></returns>
+        public List<ProductInfo> GetProByName(string proName)
+        {
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            {
+                var sql = $"SELECT * FROM productinfo WHERE ProductName LIKE '%{proName}%'";
+                var productList = conn.Query<ProductInfo>(sql).ToList();
+                return productList;
+            }
+        }
+
+        /// <summary>
+        /// 添加到购物车
+        /// </summary>
+        /// <param name="shopCar"></param>
+        /// <returns>受影响行数</returns>
+        public int AddShopCar(int productId)
+        {
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            {
+                var sql = $"insert into shopcar(productId,UId,ProductCount,ProductState) VALUES({productId},2,1,0)";
+                var i= conn.Execute(sql);
+                return i;
+            }
+        }
+
+      
     }
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WX.API.IRepository.Product;
+using WX.API.Model.Car;
 using WX.API.Model.Product;
 
 namespace WX.API.C2C.Controllers
@@ -12,6 +13,7 @@ namespace WX.API.C2C.Controllers
     public class ProductInfoController : ApiController
     {
         public IProductInfoRepository productInfoDal { get; set; }
+
         /// <summary>
         /// 查询所有商品信息
         /// </summary>
@@ -22,6 +24,43 @@ namespace WX.API.C2C.Controllers
             var productList= productInfoDal.GetProductInfo();
             return productList;
         }
+
+        /// <summary>
+        /// 根据名称查询商品信息
+        /// </summary>
+        /// <param name="proName"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public List<ProductInfo> GetProByName(string proName)
+        {
+            var productList = productInfoDal.GetProByName(proName);
+            return productList;
+        }
+
+        /// <summary>
+        /// 添加到收藏
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public int AddCollection(int productId)
+        {
+            var i = productInfoDal.AddCollection(productId);
+            return i;
+        }
+
+        /// <summary>
+        /// 删除收藏
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public int DelCollection(int id)
+        {
+            var i = productInfoDal.DelCollection(id);
+            return i;
+        }
+
         /// <summary>
         /// 根据ID查看商品具体信息
         /// </summary>
@@ -44,6 +83,7 @@ namespace WX.API.C2C.Controllers
             }
             return productInfo;
         }
+
         /// <summary>
         /// 根据分类ID查询商品信息
         /// </summary>
@@ -53,6 +93,18 @@ namespace WX.API.C2C.Controllers
         {
             var productList = productInfoDal.GetProductByClassfiyID(ClassfiyId);
             return productList;
+        }
+
+        /// <summary>
+        /// 添加到购物车
+        /// </summary>
+        /// <param name="shopCar"></param>
+        /// <returns>受影响行数</returns>
+        [HttpGet]
+        public int AddShopCar(int productId)
+        {
+            var i = productInfoDal.AddShopCar(productId);
+            return i;
         }
     }
 }

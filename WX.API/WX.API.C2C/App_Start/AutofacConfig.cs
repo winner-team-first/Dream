@@ -16,7 +16,7 @@ using WX.API.IRepository.Product;
 using WX.API.Repository.Product;
 using WX.API.Repository.Personal;
 using WX.API.IRepository.Personal;
-using WX.API.IRepository.Address;
+using WX.API.IRepository.Addresss;
 using WX.API.Repository.Address;
 
 namespace WX.API.C2C
@@ -53,6 +53,7 @@ namespace WX.API.C2C
             container.RegisterType<CollectionInfoRepository>().As<IRepository.Personal.ICollectionInfoRepository>();
             container.RegisterType<AddressRepository>().As<IAddressRepository>();
             container.RegisterType<NProductRepository>().As<INProductRepository>();
+            container.RegisterType<ShopInfoRepository>().As<IShopInfoRepository>();
         }
     }
 }

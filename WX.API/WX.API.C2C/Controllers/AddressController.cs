@@ -6,8 +6,8 @@ using System.Net.Http;
 using System.Web.Http;
 
 using System.Web;
-using WX.API.Model.Address;
-using WX.API.IRepository.Address;
+using WX.API.Model.Addresss;
+using WX.API.IRepository.Addresss;
 using WX.API.Repository.Address;
 
 namespace WX.API.C2C.Controllers
@@ -22,7 +22,7 @@ namespace WX.API.C2C.Controllers
         /// <returns></returns>
         [HttpGet]
         [ActionName("GetAddressList")]
-        public List<WX.API.Model.Address.Address> GetAddressList()
+        public List<Address> GetAddressList()
         {
             var addressList = Addr.GetAddressList();
             return addressList;
@@ -58,6 +58,17 @@ namespace WX.API.C2C.Controllers
             int i = Addr.Add(Consignee, Phone, Province, City, County, DetailedAddress);
             
             return i;
+        }
+
+        /// <summary>
+        /// 根据ID查询地址信息用来反填
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Model.Addresss.Address GetAddressById(int id)
+        {
+            var result = Addr.GetAddressById(id);
+            return result;
         }
     }
 }

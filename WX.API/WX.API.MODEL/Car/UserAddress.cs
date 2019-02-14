@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace WX.API.Model.Address
+namespace WX.API.Model.Car
 {
-    public class Address
+    public class UserAddress
     {
         /// <summary>
         /// 地址表ID

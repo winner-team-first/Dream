@@ -1,12 +1,23 @@
 <!--pages/myorder/myorder.wxml-->
 
 <view>
-  <button bindtap='getAllorders'>所有订单</button>
+  <!-- <button bindtap='getAllorders'>所有订单</button>
   <button bindtap='getstates' data-ids="1">待支付</button>
   <button bindtap='getstates' data-ids="2">配送中</button>
   <button bindtap='getstates' data-ids="3">已完成</button>
-  <button bindtap='getstates' data-ids="4">已取消</button>
+  <button bindtap='getstates' data-ids="4">已取消</button> -->
 </view>
+
+
+    <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true">
+            <view class="type-box" wx:for="{{categories}}" wx:key="id">
+                <view data-id="{{item.id}}" class="type-navbar-item {{ text == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
 <!-- 数据信息 begin-->
  <view class="nav_section">
         <block wx:for="{{items}}" wx:key="item.OrderState">
@@ -15,7 +26,6 @@
                 <view class="section_image" bindtap="navigateDetail" data-aid="{{item.ProductImage}}" >
                 <block>
                     <image  src="{{item.ProductImage  }}" mode="aspectFill" data-img="{{item.ImagesArr[0]}}"></image>
-                    
                 </block>
                 </view>
                 <!--content-->
@@ -25,8 +35,8 @@
                     </view>
                     <view class="section_cont_price">价格：￥{{item.OrderProductTotalPrice}}</view>
                     <view class="section_cont_price">名字:{{item.OrderAddrPerson}}</view>
-                    <text>{{item.OrderProductNum}}</text>
-                    <text>{{item.OrderProductPrice}}</text>
+                    <view class="section_cont_price">商品数量:{{item.OrderProductNum}}</view>
+                    <view class="section_cont_price">商品单价:{{item.OrderProductPrice}}</view>
                 </view>
                 <!--book-->
                 <view class="section_book"   bindtap="delorder" data-ids="{{item.ID}}">删除订单

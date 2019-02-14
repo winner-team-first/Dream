@@ -42,6 +42,7 @@ namespace WX.API.C2C.Controllers
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
+        [HttpGet]
         public int AddCollection(int productId)
         {
             var i = productInfoDal.AddCollection(productId);
@@ -53,6 +54,7 @@ namespace WX.API.C2C.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
         public int DelCollection(int id)
         {
             var i = productInfoDal.DelCollection(id);

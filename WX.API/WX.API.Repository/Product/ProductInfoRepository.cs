@@ -53,7 +53,7 @@ namespace WX.API.Repository.Product
         {
             using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
             {
-                var sql = $"DELETE FROM collection WHERE ID={id}";
+                var sql = $"DELETE FROM collection WHERE GoodsID={id}";
                 var i= conn.Execute(sql);
                 return i;
             }

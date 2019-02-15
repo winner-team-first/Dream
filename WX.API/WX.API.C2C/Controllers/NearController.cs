@@ -74,7 +74,7 @@ namespace WX.API.C2C.Controllers
         /// <summary>
         /// 获得经纬度距离
         /// </summary>
-        /// <param name="lat1"></param>
+        /// <param name="lat1"></param> 
         /// <param name="lng1"></param>
         /// <param name="lat2"></param>
         /// <param name="lng2"></param>

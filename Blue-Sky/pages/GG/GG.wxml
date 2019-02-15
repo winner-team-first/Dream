@@ -1,0 +1,11 @@
+    <view class="type-container">
+        <scroll-view class="type-navbar" scroll-x="true">
+            <view class="type-box" wx:for="{{categories}}" wx:key="id">
+                <view data-id="{{item.id}}" class="type-navbar-item {{ text == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                    {{item.name}}
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+
+    <view>{{text}}</view>

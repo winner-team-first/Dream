@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addresss\Address.cs" />
+    <Compile Include="Car\UserAddress.cs" />
     <Compile Include="Near\AdvertisingInfo.cs" />
     <Compile Include="Near\ProductInfo.cs" />
+    <Compile Include="Near\ShopInfo.cs" />
     <Compile Include="Personal\Allorders.cs" />
     <Compile Include="Personal\Classify.cs" />
     <Compile Include="Personal\CollectionInfo.cs" />

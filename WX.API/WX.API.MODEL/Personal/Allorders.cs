@@ -19,5 +19,6 @@ namespace WX.API.Model.Personal
         public decimal OrderProductPrice { get; set; }
         public int OrderState { get; set; }
         public string ProductImage { get; set; }
+        public string OrderProductImg { get; set; }
     }
 }

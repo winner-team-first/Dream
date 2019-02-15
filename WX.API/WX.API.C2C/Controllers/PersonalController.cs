@@ -29,6 +29,7 @@ namespace WX.API.C2C.Controllers
         /// 所有订单显示
         /// </summary>
         /// <returns></returns>
+        [ActionName("GetAllorders")]
         [HttpGet]
         public List<Allorders> GetAllorders()
         {

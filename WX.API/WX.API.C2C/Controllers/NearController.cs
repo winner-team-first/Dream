@@ -17,6 +17,9 @@ namespace WX.API.C2C.Controllers
         //Top-5商品
         public INProductRepository NProductRepository { set; get; }
 
+        //商店
+        public IShopInfoRepository ShopInfoRepository { set; get; }
+
         /// <summary>
         /// 显示广告
         /// </summary>
@@ -43,15 +46,39 @@ namespace WX.API.C2C.Controllers
         }
 
         /// <summary>
+        /// 显示附近2公里的商店
+        /// </summary>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        /// <returns></returns>
+        [ActionName("GetShopList")]
+        [HttpGet]
+        public List<ShopInfo> GetShopList(double latitude ,double longitude)
+        {
+            List<ShopInfo> shopInfos = ShopInfoRepository.GetShopInfos();
+
+            List<ShopInfo> shopList = new List<ShopInfo>();
+            foreach (var item in shopInfos)
+            {
+                double distance =  GetDistance(latitude, longitude, item.Shoplatitude, item.Shoplongitude);
+                
+                if (int.Parse(Math.Floor(distance).ToString())<=2)
+                {
+                    item.Distance = distance;
+                    shopList.Add(item);
+                }
+            }
+            return shopList;
+        }
+
+        /// <summary>
         /// 获得经纬度距离
         /// </summary>
-        /// <param name="lat1"></param>
+        /// <param name="lat1"></param> 
         /// <param name="lng1"></param>
         /// <param name="lat2"></param>
         /// <param name="lng2"></param>
         /// <returns></returns>
-        [ActionName("GetDistance")]
-        [HttpGet]
         public double GetDistance(double lat1, double lng1, double lat2, double lng2)
         {
             var radLat1 = (lat1 * Math.PI / 180.0);

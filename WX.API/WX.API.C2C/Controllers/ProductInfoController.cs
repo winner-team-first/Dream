@@ -38,6 +38,30 @@ namespace WX.API.C2C.Controllers
         }
 
         /// <summary>
+        /// 添加到收藏
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public int AddCollection(int productId)
+        {
+            var i = productInfoDal.AddCollection(productId);
+            return i;
+        }
+
+        /// <summary>
+        /// 删除收藏
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public int DelCollection(int id)
+        {
+            var i = productInfoDal.DelCollection(id);
+            return i;
+        }
+
+        /// <summary>
         /// 根据ID查看商品具体信息
         /// </summary>
         /// <param name="productID"></param>

@@ -40,7 +40,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                var sql = "select a.ID ,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,c.ProductImage  from OrderInfo a, OrderProductInfo b, ProductInfo c ";
+                var sql = "select a.ID ,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a ,OrderProductInfo b where a.ID=b.OrderID";
                 var orderlist = con.Query<Allorders>(sql).ToList();
                 return orderlist;
             }
@@ -53,7 +53,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                var sql = "select a.OrderAddrPerson, a.ID ,b.OrderProductName,b.OrderProductTotalPrice,b.OrderProductNum , b.OrderProductPrice, a.OrderState,c.ProductImage from OrderInfo a, OrderProductInfo b, ProductInfo c where a.OrderState = " + id;
+                var sql = "select a.ID ,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a ,OrderProductInfo b where a.ID=b.OrderID and a.OrderState =" + id;
                 var allordersList = con.Query<Allorders>(sql).ToList();
                 return allordersList;
             }

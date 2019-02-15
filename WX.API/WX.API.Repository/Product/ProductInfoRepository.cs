@@ -30,6 +30,36 @@ namespace WX.API.Repository.Product
         }
 
         /// <summary>
+        /// 添加到收藏
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        public int AddCollection(int productId)
+        {
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            {
+                var sql = $"INSERT INTO collection(UserID,GoodsID) VALUES(2,{productId})";
+                var i = conn.Execute(sql);
+                return i;
+            }
+        }
+
+        /// <summary>
+        /// 删除收藏
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int DelCollection(int id)
+        {
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            {
+                var sql = $"DELETE FROM collection WHERE GoodsID={id}";
+                var i= conn.Execute(sql);
+                return i;
+            }
+        }
+
+        /// <summary>
         /// 根据商品ID查询所有商品详情图片
         /// </summary>
         /// <param name="ProductID"></param>
@@ -86,6 +116,6 @@ namespace WX.API.Repository.Product
             }
         }
 
-      
+       
     }
 }

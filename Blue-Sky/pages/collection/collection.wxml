@@ -16,7 +16,7 @@
                 <view class="section_image" bindtap="navigateDetail" data-aid="{{item.Id}}" >
                 <block>
                 
-                    <image  src="{{item.ProductImage}}" mode="aspectFill" data-img="{{item.ImagesArr[0]}}"></image>
+                    <image  src="{{item.OrderProductImg}}" mode="aspectFill" data-img="{{item.ImagesArr[0]}}"></image>
                 </block>
                 </view>
 

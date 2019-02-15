@@ -17,6 +17,20 @@ namespace WX.API.IRepository.Product
         List<ProductInfo> GetProductInfo();
 
         /// <summary>
+        /// 添加到收藏
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        int AddCollection(int productId);
+
+        /// <summary>
+        /// 删除收藏
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int DelCollection(int id);
+
+        /// <summary>
         /// 根据商品ID查询所有详情图片
         /// </summary>
         /// <param name="ProductID"></param>

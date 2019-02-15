@@ -65,10 +65,51 @@ namespace WX.API.C2C.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet]
+        [ActionName("GetAddressById")]
         public Model.Addresss.Address GetAddressById(int id)
         {
             var result = Addr.GetAddressById(id);
             return result;
+        }
+
+        /// <summary>
+        /// 地址修改
+        /// </summary>
+        /// <param name="addr"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ActionName("Update")]
+        public int Update(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress,int ID)
+        {
+            var i = Addr.Update(Consignee, Phone, Province, City, County, DetailedAddress,ID);
+            return i;
+        }
+
+        /// <summary>
+        /// 根据用户状态修改默认地址状态
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ActionName("GetStateByUserID")]
+        public int GetStateByUserID(int UserID)
+        {
+            int i = Addr.GetStateByUserID(UserID);
+            return i;
+        }
+
+        /// <summary>
+        /// 根据ID设置默认地址
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [ActionName("GetDefaultAddressById")]
+        public int GetDefaultAddressById(int ID)
+        {
+            int i = Addr.GetDefaultAddressById(ID);
+            return i;            
         }
     }
 }

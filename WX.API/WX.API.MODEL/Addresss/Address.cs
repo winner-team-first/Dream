@@ -42,5 +42,10 @@ namespace WX.API.Model.Addresss
         /// 详细地址
         /// </summary>
         public string DetailedAddress { get; set; }
+
+        /// <summary>
+        /// 是否默认
+        /// </summary>
+        public int DefaultAddress { get; set; }
     }
 }

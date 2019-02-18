@@ -1,47 +1,143 @@
 <!--pages/myorder/myorder.wxml-->
 
-<view>
-  <!-- <button bindtap='getAllorders'>所有订单</button>
-  <button bindtap='getstates' data-ids="1">待支付</button>
-  <button bindtap='getstates' data-ids="2">配送中</button>
-  <button bindtap='getstates' data-ids="3">已完成</button>
-  <button bindtap='getstates' data-ids="4">已取消</button> -->
+
+
+<view bindtap="allOrderPage" class="allOrder">
+
+    <text class="allOrder-left">全部订单</text>
+
+    <text class="allOrder-right">查看全部订单</text>
+
 </view>
 
+<view class="navTopList">
 
-    <view class="type-container">
-        <scroll-view class="type-navbar" scroll-x="true">
-            <view class="type-box" wx:for="{{categories}}" wx:key="id">
-                <view data-id="{{item.id}}" class="type-navbar-item {{ text == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
-                    {{item.name}}
-                </view>
-            </view>
-        </scroll-view>
+    <view class="ywc order-info">
+
+        <view class="ywc-icon active"></view>
+
+        <text class="ywc-txt active">已完成</text>
+
     </view>
-<!-- 数据信息 begin-->
- <view class="nav_section">
-        <block wx:for="{{items}}" wx:key="item.OrderState">
-            <view class="nav_section_items" >
-                <!--image-->
-                <view class="section_image" bindtap="navigateDetail" data-aid="{{item.ProductImage}}" >
-                <block>
-                    <image  src="{{item.ProductImage  }}" mode="aspectFill" data-img="{{item.ImagesArr[0]}}"></image>
-                </block>
-                </view>
-                <!--content-->
-                <view class="section_cont" bindtap="navigateDetail" data-aid="{{item.Id}}">
-                    <view class="section_cont_sub">
-                        <text>{{item.OrderProductName}}</text>
-                    </view>
-                    <view class="section_cont_price">价格：￥{{item.OrderProductTotalPrice}}</view>
-                    <view class="section_cont_price">名字:{{item.OrderAddrPerson}}</view>
-                    <view class="section_cont_price">商品数量:{{item.OrderProductNum}}</view>
-                    <view class="section_cont_price">商品单价:{{item.OrderProductPrice}}</view>
-                </view>
-                <!--book-->
-                <view class="section_book"   bindtap="delorder" data-ids="{{item.ID}}">删除订单
-                </view>
-            </view>
-        </block>
+
+    <view class="dfk order-info">
+
+        <view class="dfk-icon"></view>
+
+        <text class="dfk-txt" bindtap='tabClick' data-ids='1'>待付款</text>
+
+    </view>
+
+    <view class="dfh order-info">
+
+        <view class="dfh-icon"></view>
+
+        <text class="dfh-txt" bindtap='tabClick' data-ids='2'>待发货</text>
+
+    </view>
+
+    <view class="dsh order-info">
+
+        <view class="dsh-icon"></view>
+
+        <text class="dsh-txt" bindtap='tabClick' data-ids='3'>待收货</text>
+
+    </view>
+
+    <view class="yqx order-info">
+
+        <view class="yqx-icon"></view>
+
+        <text class="yqx-txt" bindtap='tabClick' data-ids='4'>已取消</text>
+
+    </view>
+
+    <view class="tkz order-info">
+
+        <view class="tkz-icon"></view>
+
+        <text class="tkz-txt" bindtap='tabClick' data-ids='5'>退款中</text>
+
+    </view>
+
+</view>
+
+<view bindtap="toOrderDetail" class="orderDetails">
+
+    <view class="orderListTitle">
+
+        <view class="userImg"><image src="http://ojhq3mgil.bkt.clouddn.com/web/478/20170116/201701161749246654.jpg"></image></view>
+
+        <text class="userName">上善若水</text>
+
+        <text class="orderStatus">交易成功</text>
+
+    </view>
+
+    <view class="orderListDetails">
+
+        <view class="productImg">
+
+            <image src="http://ojhq3mgil.bkt.clouddn.com/465/20161024/201610241238006043.jpg"></image>
+
+        </view>
+
+        <view class="productInfo">
+
+            <view class="productTitle">Canmake缤纷糖果保湿唇彩 唇蜜 01经典粉色</view>
+
+            <text class="productPrice">￥132.00</text>
+
+            <text class="productQuantity">x1</text>
+
+        </view>
+
+    </view>
+
+    <view class="productCount">
+
+        <view>合计：￥<text>132.00</text></view>
+
+    </view>
+
+</view>  
+
+<view class="orderDetails">
+
+    <view class="orderListTitle">
+
+        <view class="userImg"><image src="http://ojhq3mgil.bkt.clouddn.com/web/478/20170116/201701161749246654.jpg"></image></view>
+
+        <text class="userName">上善若水</text>
+
+        <text class="orderStatus">交易成功</text>
+
+    </view>
+
+    <view class="orderListDetails">
+
+        <view class="productImg">
+
+            <image src="http://ojhq3mgil.bkt.clouddn.com/465/20161024/201610241238006043.jpg"></image>
+
+        </view>
+
+        <view class="productInfo">
+
+            <view class="productTitle">Canmake缤纷糖果保湿唇彩 唇蜜 01经典粉色</view>
+
+            <text class="productPrice">￥132.00</text>
+
+            <text class="productQuantity">x1</text>
+
+      </view>
+
+    </view>
+
+    <view class="productCount">
+
+        <view>合计：￥<text>132.00</text></view>
+
+    </view>
 </view>
 <!-- 数据信息 end-->

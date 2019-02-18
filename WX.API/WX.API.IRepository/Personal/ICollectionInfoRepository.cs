@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WX.API.IRepository.Personal
 {
+    using Model.Product;
     using WX.API.Model.Personal;
     public interface ICollectionInfoRepository
     {
@@ -24,6 +25,10 @@ namespace WX.API.IRepository.Personal
         /// 订单状态
         /// </summary>
         List<Allorders> GetNewOrdersStatus(string id);
+
+
+        List<OrderProductInfo> GetProductByOrderID(int orderId);
+
         /// <summary>
         /// 取消收藏
         /// </summary>
@@ -36,5 +41,16 @@ namespace WX.API.IRepository.Personal
         /// <param name="id"></param>
         /// <returns></returns>
         int Delete(string id);
+        /// <summary>
+        /// 一键支付
+        /// </summary>
+        /// <returns></returns>
+        int PayInformation(string id);
+        /// <summary>
+        /// 确认支付
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int Payment(string id);
     }
 }

@@ -36,15 +36,25 @@ namespace WX.API.C2C.Controllers
             var getallorders = CollectionInfoRepository.GetAllorders();
             return getallorders;
         }
+
         /// <summary>
-        /// 订单状态
+        /// 根据不同订单状态查询订单
         /// </summary>
-        [ActionName("GetNewOrders")]
+        [ActionName("GetNewOrdersByStatu")]
         [HttpGet]
-        public List<Allorders> GetNewOrdersStatus(string id)
+        public List<Allorders> GetNewOrdersByStatu(string id)
         {
-            var getnewOrders =  CollectionInfoRepository.GetNewOrdersStatus(id);
-            return getnewOrders;
+            List<Allorders> getOrders = CollectionInfoRepository.GetNewOrdersStatus(id);
+
+            foreach (var item in getOrders)
+            {
+                List<OrderProductInfo> orderProducts = CollectionInfoRepository.GetProductByOrderID(item.ID);
+                foreach (var orderProduct in orderProducts)
+                {
+                    item.Products.Add(orderProduct);
+                }
+            }
+            return getOrders;
         }
 
         /// <summary>
@@ -52,12 +62,11 @@ namespace WX.API.C2C.Controllers
         /// </summary>
         /// <param name="pid"></param>
         /// <returns></returns>
-        /// 
         [ActionName("GetDeleteById")]
         [HttpGet]
         public int DeleteById(string id)
         {
-            var count= CollectionInfoRepository.DeleteById(id);
+            var count = CollectionInfoRepository.DeleteById(id);
             return count;
         }
 
@@ -70,6 +79,32 @@ namespace WX.API.C2C.Controllers
         {
             var count = CollectionInfoRepository.Delete(id);
             return count;
+        }
+
+        /// <summary>
+        /// 一键支付该状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ActionName("PayInformation")]
+        [HttpGet]
+        public int PayInformation(string id)
+        {
+            int i = CollectionInfoRepository.PayInformation(id);
+            return i;
+        }
+
+        /// <summary>
+        /// 确认支付
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ActionName("Payment")]
+        [HttpGet]
+        public int Payment(string id)
+        {
+            int i = CollectionInfoRepository.Payment(id);
+            return i;
         }
     }
 }

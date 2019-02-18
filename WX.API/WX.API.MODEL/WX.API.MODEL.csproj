@@ -49,10 +49,9 @@
     <Compile Include="Personal\Allorders.cs" />
     <Compile Include="Personal\Classify.cs" />
     <Compile Include="Personal\CollectionInfo.cs" />
-    <Compile Include="Personal\GoodsInfo.cs" />
-    <Compile Include="Personal\Img.cs" />
-    <Compile Include="Personal\OrderForm.cs" />
-    <Compile Include="Personal\OrderGoods.cs" />
+    <Compile Include="Personal\ProductInfo.cs" />
+    <Compile Include="Personal\OrderInfo.cs" />
+    <Compile Include="Personal\OrderProductInfo.cs" />
     <Compile Include="Product\Img.cs" />
     <Compile Include="Product\ProductInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -69,5 +69,17 @@ namespace WX.API.C2C.Controllers
         {
             return ShopCarRepoitory.GetAddress();
         }
+        [HttpPost]
+        [ActionName("AddOrderInfo")]
+        public int AddOrderInfo(OrderInfo data)
+        {
+            return ShopCarRepoitory.AddOrderInfo(data);
+        }
+        [HttpPost]
+        [ActionName("AddOrderProduct")]
+        public int AddOrderProduct(OrderProduct data)
+        {
+            return ShopCarRepoitory.AddOrderProduct(data);
+        }
     }
 }

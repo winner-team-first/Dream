@@ -40,5 +40,26 @@ namespace WX.API.IRepository.Addresss
         /// <param name="id"></param>
         /// <returns></returns>
         Address GetAddressById(int id);
+
+        /// <summary>
+        /// 地址修改
+        /// </summary>
+        /// <param name="addr"></param>
+        /// <returns></returns>
+        int Update(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress, int ID);
+
+        /// <summary>
+        /// 根据用户状态修改默认地址状态
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
+        int GetStateByUserID(int UserID);
+
+        /// <summary>
+        /// 根据ID设置默认地址
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        int GetDefaultAddressById(int ID);
     }
 }

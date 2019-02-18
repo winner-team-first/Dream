@@ -30,7 +30,7 @@ namespace WX.API.Repository.Address
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
             {
-                int i = conn.Execute("insert into address values(NULL,'" + Consignee + "','" + Phone + "','" + Province + "','" + City + "','" + County + "','" + DetailedAddress + "')");
+                int i = conn.Execute("insert into address values(NULL,'" + Consignee + "','" + Phone + "','" + Province + "','" + City + "','" + County + "','" + DetailedAddress + "',2,0)");
                 return i;
             }
         }
@@ -43,7 +43,8 @@ namespace WX.API.Repository.Address
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
             {
-                int i = conn.Execute("delete from Address where ID = " + id);
+                var sql = "delete from Address where ID = " + id;
+                int i = conn.Execute(sql);
                 return i;
             }
         }
@@ -71,8 +72,55 @@ namespace WX.API.Repository.Address
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
             {
-                List<Model.Addresss.Address> addressList = conn.Query<Model.Addresss.Address>("select * from Address").ToList();
+                List<Model.Addresss.Address> addressList = conn.Query<Model.Addresss.Address>("select * from Address where UserID = 2").ToList();
                 return addressList;
+            }
+        }
+
+        /// <summary>
+        /// 根据用户状态修改默认地址状态
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
+        public int GetStateByUserID(int UserID)
+        {
+            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
+            {
+                var sql = "update Address set DefaultAddress = 0 where UserID = " + UserID;
+                int i = conn.Execute(sql);
+                return i;
+            }
+        }
+
+        /// <summary>
+        /// 根据ID设置默认地址
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public int GetDefaultAddressById(int ID)
+        {
+            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
+            {
+                var sql = "update Address set DefaultAddress = 1 where ID = " + ID;
+                int i = conn.Execute(sql);
+                return i;
+            }
+        }
+        
+        /// <summary>
+        /// 地址修改
+        /// </summary>
+        /// <param name="addr"></param>
+        /// <returns></returns>
+        public int Update(string Consignee, string Phone, string Province, string City, string County, string DetailedAddress, int ID)
+        {
+            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
+            {
+                var sql = "update Address set Consignee = '"+ Consignee + "' , Phone = '"+ Phone + "' , Province = '"+ Province + "' , City = '"+ City + "' , County = '"+ County + "' , DetailedAddress = '"+ DetailedAddress + "' where ID = '"+ID+"'";
+                
+                var i = conn.Execute(sql);
+                return i;
+
             }
         }
     }

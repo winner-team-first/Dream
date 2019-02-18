@@ -12,6 +12,7 @@ namespace WX.API.Model.Personal
     public class Allorders
     {
         public int ID { get; set; }
+        public int OrderID { get; set; }
         public string OrderAddrPerson { get; set; }
         public string OrderProductName { get; set; }
         public decimal OrderProductTotalPrice { get; set; }
@@ -20,5 +21,9 @@ namespace WX.API.Model.Personal
         public int OrderState { get; set; }
         public string ProductImage { get; set; }
         public string OrderProductImg { get; set; }
+
+        
+
+        public List<OrderProductInfo> Products { get; set; } = new List<OrderProductInfo>();
     }
 }

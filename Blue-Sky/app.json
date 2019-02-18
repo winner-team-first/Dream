@@ -4,10 +4,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/xiaoxi/xiaoxi",
-    "pages/pay/pay",
     "pages/address/address",
     "pages/collection/collection",
-    "pages/myorder/myorder"
+    "pages/myorder/myorder",
+    "pages/Pay/pay"
   ],
   "window": {
     "navigationBarTextStyle": "white",

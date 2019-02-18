@@ -13,6 +13,7 @@ namespace WX.API.Repository.Personal
     using MySql.Data.MySqlClient;
     using System.Configuration;
     using WX.API.Common;
+    using Model.Product;
 
     public class CollectionInfoRepository : IRepository.Personal.ICollectionInfoRepository
     {
@@ -53,9 +54,21 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                var sql = "select a.ID ,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a ,OrderProductInfo b where a.ID=b.OrderID and a.OrderState =" + id;
+                //var sql = "select a.ID ,b.OrderID,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a ,OrderProductInfo b where a.ID=b.OrderID and a.OrderState =" + id;
+                var sql = $"select a.ID ,b.OrderID,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a JOIN OrderProductInfo b where a.ID = b.OrderID and a.OrderState =" + id;
                 var allordersList = con.Query<Allorders>(sql).ToList();
                 return allordersList;
+            }
+        }
+
+        public List<OrderProductInfo> GetProduct(int OrderID)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+
+                var sql = $"SELECT * FROM OrderProductInfo WHERE  OrderID={OrderID}";
+                var ProList = con.Query<OrderProductInfo>(sql).ToList();
+                return ProList;
             }
         }
 
@@ -82,8 +95,47 @@ namespace WX.API.Repository.Personal
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
                 var sql = $"delete from OrderInfo where UserID={id}";
-                int i= con.Execute(sql);
+                int i = con.Execute(sql);
                 return i;
+            }
+        }
+        /// <summary>
+        /// 一键支付改状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int PayInformation(string id)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+                var sql = $"update OrderInfo set OrderState=4 where ID={id}";
+                var i = con.Execute(sql);
+                return i;
+            }
+        }
+        /// <summary>
+        /// 确认支付
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int Payment(string id)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+                var sql = $"update OrderInfo set OrderState=5 where ID={id}";
+                var i = con.Execute(sql);
+                return i;
+            }
+        }
+
+        public List<OrderProductInfo> GetProductByOrderID(int orderId)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+
+                var sql = $"SELECT * from orderproductinfo WHERE OrderID={orderId}";
+                var orderProList = con.Query<OrderProductInfo>(sql).ToList();
+                return orderProList;
             }
         }
     }

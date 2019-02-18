@@ -30,7 +30,7 @@ namespace WX.API.Repository.Address
         {
             using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LjbConnection))
             {
-                int i = conn.Execute("insert into address values(NULL,'" + Consignee + "','" + Phone + "','" + Province + "','" + City + "','" + County + "','" + DetailedAddress + "')");
+                int i = conn.Execute("insert into address values(NULL,'" + Consignee + "','" + Phone + "','" + Province + "','" + City + "','" + County + "','" + DetailedAddress + "',2,0)");
                 return i;
             }
         }

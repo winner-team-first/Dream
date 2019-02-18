@@ -1,27 +1,38 @@
 // pages/myorder/myorder.js
 Page({
-
+    allOrderPage:function (){
+    wx.navigateTo({
+      url: '../seller_allOrder/seller_allOrder'
+    })
+  },
+  toOrderDetail: function () {
+    wx.navigateTo({
+      url: '../order_detail/order_details'
+    })
+  },
   /**
    * 页面的初始数据
    */
   data: {
-    categories: [{name:"全部"},{ id: 1, name: "待支付" }, { id: 2, name: "待发货" }, { id: 3, name: "待收货" }, { id: 4, name: "已取消" }],
-    text: 0
   },
   onLoad() {
   },
   tabClick: function (e) {
     var that = this;
       wx.request({
-        url: 'http://localhost:61966/api/Personal/GetNewOrders?id=' + e.currentTarget.dataset.id,
+        url: 'http://localhost:61966/api/Personal/GetNewOrdersByStatu?id=' + e.currentTarget.dataset.ids,
         method: 'get',
         success: function (res) {
           that.setData({
-            items: res.data
+            orders:res.data
           })
         }
       })
   },
+  
+
+
+
   
   /**
    * 生命周期函数--监听页面加载
@@ -41,7 +52,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -82,7 +92,7 @@ Page({
  getAllorders: function (options) {
     var that = this;
     wx.request({
-      url: 'http://localhost:61966/api/Personal/GetAllorders',
+      url: 'http://localhost:61966/api/Personal/GetProductByOrderID?id=4&orderId=1',
       method: 'get',
       success: function (res) {
         console.log(res.data)
@@ -92,16 +102,89 @@ Page({
       }
     })
   },
+  Topayy: function (e) {
+    var that = this;
+    console.log(e.currentTarget.dataset.idpay)
+    wx.request({
+      url: 'http://localhost:61966/api/Personal/PayInformation?id='+e.currentTarget.dataset.idpay,
+      method: 'get',
+      success: function (res) {
+          if(res.data>0)
+          {
+            that.onLoad();
+            wx.showToast({
+              title: '支付成功',
+              icon:'success',
+              duration:2000
+            })
+            
+          }
+          else
+          {
+            wx.showToast({
+              title: '支付失败',
+              icon:'default',
+              duration:2000
+            })
+          }
+      }
+    })
+  },
+  querenshou:function(e){
+    wx.showModal({
+      title: '提示',
+      content: '是否确认收货',
+      success:function(){
+        
+      }
+    })
+    wx.request({
+      url: 'http://localhost:61966/api/Personal/Payment?id='+e.currentTarget.dataset.queren,
+      method:'get',
+      success:function(res){
+        if(res.data>0)
+        {
+          wx.showToast({
+            title: '已确认收货',
+            icon:'success',
+            duration:2000
+          })
+          that.onLoad();
+        }
+        else{
+          wx.showToast({
+            title: '确认失败，请重试',
+            icon:'default',
+            duration:2000
+          })
+        }
+      }
+    })
+  },
   getstates:function(e){
+    console.log(111111);
     var that=this;
     var getid=e.currentTarget.dataset.ids;
     wx.request({
-      url: 'http://localhost:61966/api/Personal/GetNewOrders',
+      url: 'http://localhost:61966/api/Personal/GetNewOrders?id='+getid,
       method:'get',
-      data:{id:getid},
+      // data:{id:getid},
       success:function(res){
-        that.setData({
-          items:res.data
+        console.log(111111);
+     that.setData({
+       aaaaaa:res.data
+     })
+        console.log(that.data.items.ID)
+        console.log(that.data.items.OrderID)
+        wx.request({
+          url: 'http://localhost:61966/api/Personal/GetProductByOrderID',
+          method:'get',
+          data: { id: res.data.items.ID, orderid: res.data.items.OrderID},
+          success:function(res1) {
+           that.setData({
+             items1:res1.data
+           })
+          }
         })
       }
     })

@@ -1,28 +1,19 @@
 // pages/myorder/myorder.js
 Page({
-    allOrderPage:function (){
-    wx.navigateTo({
-      url: '../seller_allOrder/seller_allOrder'
-    })
-  },
-  toOrderDetail: function () {
-    wx.navigateTo({
-      url: '../order_detail/order_details'
-    })
-  },
+
   /**
    * 页面的初始数据
    */
   data: {
   },
-  onLoad() {
-  },
   tabClick: function (e) {
     var that = this;
+    console.log(e.currentTarget.dataset.ids)
       wx.request({
         url: 'http://localhost:61966/api/Personal/GetNewOrdersByStatu?id=' + e.currentTarget.dataset.ids,
         method: 'get',
         success: function (res) {
+          console.log(res.data)
           that.setData({
             orders:res.data
           })
@@ -38,7 +29,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    var that = this;
+    wx.request({
+      url: 'http://localhost:61966/api/Personal/GetNewOrdersByStatu?id=0',
+      method: 'get',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          orders: res.data
+        })
+      }
+    })
   },
 
   /**
@@ -89,19 +90,6 @@ Page({
 
   },
 
- getAllorders: function (options) {
-    var that = this;
-    wx.request({
-      url: 'http://localhost:61966/api/Personal/GetProductByOrderID?id=4&orderId=1',
-      method: 'get',
-      success: function (res) {
-        console.log(res.data)
-        that.setData({
-          items: res.data
-        })
-      }
-    })
-  },
   Topayy: function (e) {
     var that = this;
     console.log(e.currentTarget.dataset.idpay)
@@ -130,36 +118,106 @@ Page({
       }
     })
   },
-  querenshou:function(e){
-    wx.showModal({
-      title: '提示',
-      content: '是否确认收货',
-      success:function(){
-        
-      }
-    })
+  remind:function(e){
     wx.request({
-      url: 'http://localhost:61966/api/Personal/Payment?id='+e.currentTarget.dataset.queren,
+      url: 'http://localhost:61966/api/Personal/Remind?id=' + e.currentTarget.dataset.remindd,
       method:'get',
-      success:function(res){
+      success:function(res) {
         if(res.data>0)
         {
           wx.showToast({
-            title: '已确认收货',
-            icon:'success',
+            title: '已提醒商家',
+            icon:"success",
             duration:2000
           })
           that.onLoad();
         }
-        else{
+        else
+        {
           wx.showToast({
-            title: '确认失败，请重试',
+            title: '提醒失败',
             icon:'default',
             duration:2000
           })
         }
       }
     })
+  },
+  quxiao: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '是否确认取消订单',
+      success:function(res){
+        if(res.confirm)
+        {
+          wx.request({
+            url: 'http://localhost:61966/api/Personal/DeleteOrderID?id=' + e.currentTarget.dataset.idpayy,
+            method: 'get',
+            success: function (res) {
+              if (res.data > 0) {
+                wx.showToast({
+                  title: '已取消订单',
+                  icon: "success",
+                  duration: 2000
+                })
+                that.onLoad();
+              }
+              else {
+                wx.showToast({
+                  title: '取消失败',
+                  icon: 'default',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        }
+        else
+        {
+
+        }
+      }
+    }) 
+    console.log(e.currentTarget.dataset.idpayy)
+    
+  },
+  querenshou:function(e){
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否确认收货',
+      success:function(res){
+        if(res.confirm)
+        {
+          wx.request({
+            url: 'http://localhost:61966/api/Personal/Payment?id=' + e.currentTarget.dataset.idpay,
+            method: 'get',
+            success: function (res) {
+              if (res.data > 0) {
+                wx.showToast({
+                  title: '已确认收货',
+                  icon: 'success',
+                  duration: 2000
+                })
+                that.onLoad();
+              }
+              else {
+                wx.showToast({
+                  title: '确认失败，请重试',
+                  icon: 'default',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        }
+        else
+        {
+
+        }
+      }
+    })
+    
   },
   getstates:function(e){
     console.log(111111);
@@ -171,7 +229,7 @@ Page({
       // data:{id:getid},
       success:function(res){
         console.log(111111);
-     that.setData({
+      that.setData({
        aaaaaa:res.data
      })
         console.log(that.data.items.ID)

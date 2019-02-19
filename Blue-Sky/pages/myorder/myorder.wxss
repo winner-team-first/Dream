@@ -14,7 +14,6 @@
 	color: #666;
 	float: right;
 	padding-right: 60rpx;
-	background: url(../../../images/member_list_arrow.png) no-repeat 90% center;
 	background-size: 30rpx 30rpx;
 }
 
@@ -22,13 +21,12 @@
 .navTopList{
 	display: flex;
 	width: 100%;
-	height: 160rpx;
+	height: 120rpx;
 	background: #fff;
 	border-bottom: 1rpx solid #f3f3f3;
 }
 .navTopList .order-info{
-	padding-top: 30rpx;
-	text-align: center;
+	text-align: top;
 }
 .navTopList .order-info view{
 	width: 56rpx;
@@ -45,47 +43,40 @@
 	flex:1;
 }
 .navTopList .ywc .ywc-icon{
-	background: url(../../../images/icon_jywc.png) no-repeat center center;
 	background-size: 56rpx 56rpx;
 }
 .navTopList .dfk{
 	flex:1;
 }
 .navTopList .dfk .dfk-icon{
-	background: url(../../../images/icon_dfk.png) no-repeat center center;
 	background-size: 56rpx 56rpx;
 }
 .navTopList .dfh{
 	flex:1;
 }
 .navTopList .dfh .dfh-icon{
-	background: url(../../../images/icon_dfh.png) no-repeat center center;
 	background-size: 56rpx 56rpx;
 }
 .navTopList .dsh{
 	flex:1;
 }
 .navTopList .dsh .dsh-icon{
-	background: url(../../../images/icon_dsh.png) no-repeat center;
 	background-size: 56rpx 56rpx;
 }
 .navTopList .yqx{
 	flex:1;
 }
 .navTopList .yqx .yqx-icon{
-	background: url(../../../images/icon_yqx.png) no-repeat center;
 	background-size: 56rpx 56rpx;
 }
 .navTopList .tkz{
 	flex:1;
 }
 .navTopList .tkz .tkz-icon{
-	background: url(../../../images/icon_tkz.png) no-repeat center center;
 	background-size: 56rpx 56rpx;
 }
 
 .navTopList .ywc .ywc-icon.active{
-	background: url(../../../images/icon_jywc_active.png) no-repeat center center;
 	background-size: 56rpx 56rpx;
 }
 .navTopList .dfk .dfk-icon.active{

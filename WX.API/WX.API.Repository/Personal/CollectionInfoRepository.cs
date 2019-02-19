@@ -54,8 +54,17 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
+                var sql = "";
+                if (id=="0")
+                {
+                    sql = $"select * from orderinfo where userId=2 ";
+                }
+                else
+                {
+                    sql = $"select * from orderinfo where userId=2 and OrderState =" + id;
+                }
                 //var sql = "select a.ID ,b.OrderID,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a ,OrderProductInfo b where a.ID=b.OrderID and a.OrderState =" + id;
-                var sql = $"select a.ID ,b.OrderID,a.OrderAddrPerson, b.OrderProductName ,b.OrderProductTotalPrice ,b.OrderProductNum , b.OrderProductPrice , a.OrderState ,b.OrderProductImg from OrderInfo a JOIN OrderProductInfo b where a.ID = b.OrderID and a.OrderState =" + id;
+                
                 var allordersList = con.Query<Allorders>(sql).ToList();
                 return allordersList;
             }
@@ -108,7 +117,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                var sql = $"update OrderInfo set OrderState=4 where ID={id}";
+                var sql = $"update OrderInfo set OrderState=3 where ID={id}";
                 var i = con.Execute(sql);
                 return i;
             }
@@ -122,7 +131,7 @@ namespace WX.API.Repository.Personal
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
             {
-                var sql = $"update OrderInfo set OrderState=5 where ID={id}";
+                var sql = $"update OrderInfo set OrderState=3 where ID={id}";
                 var i = con.Execute(sql);
                 return i;
             }
@@ -136,6 +145,43 @@ namespace WX.API.Repository.Personal
                 var sql = $"SELECT * from orderproductinfo WHERE OrderID={orderId}";
                 var orderProList = con.Query<OrderProductInfo>(sql).ToList();
                 return orderProList;
+            }
+        }
+        /// <summary>
+        /// 取消订单
+        /// </summary>
+        /// <returns></returns>
+        public int DeleteOrderID(string id)
+        { 
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+                string sql = $"delete from OrderInfo where ID={id}";
+                int i = con.Execute(sql);
+                string sqll = $"delete from OrderProductInfo where OrderID={id}";
+                int j = con.Execute(sqll);
+                if(i>0&&j>0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+        /// <summary>
+        /// 提醒商家
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int Remind(string id)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+
+                var sql = $"update OrderInfo set OrderState=4 where ID={id}";
+                var i = con.Execute(sql);
+                return i;
             }
         }
     }

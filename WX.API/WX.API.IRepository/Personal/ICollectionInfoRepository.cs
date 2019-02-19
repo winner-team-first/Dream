@@ -52,5 +52,17 @@ namespace WX.API.IRepository.Personal
         /// <param name="id"></param>
         /// <returns></returns>
         int Payment(string id);
+
+        /// <summary>
+        /// 取消订单
+        /// </summary>
+        /// <returns></returns>
+        int DeleteOrderID(string id);
+        /// <summary>
+        /// 提醒商家
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int Remind(string id);
     }
 }

@@ -1,143 +1,65 @@
-<!--pages/myorder/myorder.wxml-->
-
-
-
-<view bindtap="allOrderPage" class="allOrder">
-
-    <text class="allOrder-left">全部订单</text>
-
-    <text class="allOrder-right">查看全部订单</text>
-
-</view>
 
 <view class="navTopList">
 
-    <view class="ywc order-info">
-
-        <view class="ywc-icon active"></view>
-
-        <text class="ywc-txt active">已完成</text>
-
-    </view>
-
-    <view class="dfk order-info">
-
-        <view class="dfk-icon"></view>
-
-        <text class="dfk-txt" bindtap='tabClick' data-ids='1'>待付款</text>
-
-    </view>
-
-    <view class="dfh order-info">
-
-        <view class="dfh-icon"></view>
-
-        <text class="dfh-txt" bindtap='tabClick' data-ids='2'>待发货</text>
-
-    </view>
-
-    <view class="dsh order-info">
-
-        <view class="dsh-icon"></view>
-
-        <text class="dsh-txt" bindtap='tabClick' data-ids='3'>待收货</text>
-
-    </view>
-
-    <view class="yqx order-info">
-
-        <view class="yqx-icon"></view>
-
-        <text class="yqx-txt" bindtap='tabClick' data-ids='4'>已取消</text>
-
-    </view>
-
-    <view class="tkz order-info">
-
-        <view class="tkz-icon"></view>
-
-        <text class="tkz-txt" bindtap='tabClick' data-ids='5'>退款中</text>
-
-    </view>
-
+	<view class="ywc order-info">
+		<view class="ywc-icon"></view>
+		<text class="ywc-txt" bindtap='tabClick' data-ids="1">已完成</text>
+	</view>
+	<view class="dfk order-info">
+		<view class="dfk-icon"></view>
+		<text class="dfk-txt" bindtap='tabClick' data-ids="2">待付款</text>
+	</view>
+	<view class="dfh order-info">
+		<view class="dfh-icon"></view>
+		<text class="dfh-txt" bindtap='tabClick' data-ids="3">待发货</text>
+	</view>
+	<view class="dsh order-info">
+		<view class="dsh-icon"></view>
+		<text class="dsh-txt" bindtap='tabClick' data-ids="4">待收货</text>
+	</view>
+	<view class="yqx order-info">
+		<view class="yqx-icon"></view>
+		<text class="yqx-txt" bindtap='tabClick' data-ids="0">全部订单</text>
+	</view>
 </view>
 
-<view bindtap="toOrderDetail" class="orderDetails">
-
-    <view class="orderListTitle">
-
-        <view class="userImg"><image src="http://ojhq3mgil.bkt.clouddn.com/web/478/20170116/201701161749246654.jpg"></image></view>
-
-        <text class="userName">上善若水</text>
-
-        <text class="orderStatus">交易成功</text>
-
+<view class='Orders'>
+<view bindtap="toOrderDetail" class="orderDetails" wx:for="{{orders}}" wx:key="item.ID">
+  <view class="orderListTitle">
+        <view class="orderStatus" wx:if="{{item.OrderState==1}}">交易成功</view>
+        <view class="orderStatus" wx:if="{{item.OrderState==2}}">准备交易</view>
+        <view class="orderStatus" wx:if="{{item.OrderState==3}}">待发货</view>
+        <view class="orderStatus" wx:if="{{item.OrderState==4}}">待收货</view>
+        <view class="orderStatus" wx:if="{{item.OrderState==5}}">已取消</view>
     </view>
 
-    <view class="orderListDetails">
 
-        <view class="productImg">
-
-            <image src="http://ojhq3mgil.bkt.clouddn.com/465/20161024/201610241238006043.jpg"></image>
-
-        </view>
-
-        <view class="productInfo">
-
-            <view class="productTitle">Canmake缤纷糖果保湿唇彩 唇蜜 01经典粉色</view>
-
-            <text class="productPrice">￥132.00</text>
-
-            <text class="productQuantity">x1</text>
-
-        </view>
-
-    </view>
-
-    <view class="productCount">
-
-        <view>合计：￥<text>132.00</text></view>
-
-    </view>
-
-</view>  
-
-<view class="orderDetails">
-
-    <view class="orderListTitle">
-
-        <view class="userImg"><image src="http://ojhq3mgil.bkt.clouddn.com/web/478/20170116/201701161749246654.jpg"></image></view>
-
-        <text class="userName">上善若水</text>
-
-        <text class="orderStatus">交易成功</text>
-
-    </view>
-
-    <view class="orderListDetails">
-
-        <view class="productImg">
-
-            <image src="http://ojhq3mgil.bkt.clouddn.com/465/20161024/201610241238006043.jpg"></image>
-
-        </view>
-
-        <view class="productInfo">
-
-            <view class="productTitle">Canmake缤纷糖果保湿唇彩 唇蜜 01经典粉色</view>
-
-            <text class="productPrice">￥132.00</text>
-
-            <text class="productQuantity">x1</text>
-
-      </view>
-
-    </view>
-
-    <view class="productCount">
-
-        <view>合计：￥<text>132.00</text></view>
-
-    </view>
+	<view class="orderListDetails"wx:for="{{item.Products}}" wx:key="item.Products.ID">
+		<view class="productImg">
+			<image src="{{item.OrderProductImg}}"></image>
+		</view>
+		<view class="productInfo">
+			<view class="productTitle">{{item.OrderProductName}}</view>
+			<text class="productPrice">￥{{item.OrderProductPrice}}</text>
+			<text class="productQuantity">x{{item.OrderProductNum}}</text>
+		</view>
+	</view>
+	<view class="productCount">
+<view data-idpay="{{item.ID}}" wx:if="{{item.OrderState==1}}">删除订单</view>
+<view wx:else=""></view>
+<view bindtap='Topayy' data-idpay="{{item.ID}}" wx:if="{{item.OrderState==2}}">一键支付</view>
+<view wx:else=""></view>
+<view bindtap='quxiao' data-idpayy="{{item.ID}}" wx:if="{{item.OrderState==2}}">取消订单</view>
+<view wx:else=""></view>
+<view  bindtap='remind' data-remindd="{{item.ID}}" wx:if="{{item.OrderState==3}}">提醒商家</view>
+<view wx:else=""></view>
+<view bindtap='querenshou' data-idpay="{{item.ID}}" wx:if="{{item.OrderState==4}}">确认收货</view>
+<view wx:else=""></view>
+<view data-idpay="{{item.ID}}" wx:if="{{item.OrderState==5}}">删除订单</view>
+<view wx:else=""></view>
+		<view>合计：￥<text>{{item.OrderProductMoney}}</text></view>
+	</view>
+</view>	
 </view>
-<!-- 数据信息 end-->
+
+

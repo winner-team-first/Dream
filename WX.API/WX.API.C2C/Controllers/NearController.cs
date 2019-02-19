@@ -39,6 +39,7 @@ namespace WX.API.C2C.Controllers
         /// <returns></returns>
         [ActionName("GetProductList")]
         [HttpGet]
+        [RequestAuthorize]
         public List<ProductInfo> GetProductList()
         {
             List<ProductInfo> productList = NProductRepository.GetProductList();

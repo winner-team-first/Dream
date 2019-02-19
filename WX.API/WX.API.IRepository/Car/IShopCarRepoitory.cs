@@ -22,6 +22,14 @@ namespace WX.API.IRepository.Car
 
         List<UserAddress> GetAddress();
 
+        int AddOrderInfo(OrderInfo data);
+
+        int AddOrderProduct(OrderProduct data);
+
+
+
+
+
 
     }
 }

@@ -39,6 +39,7 @@ namespace WX.API.C2C.Controllers
         /// <returns></returns>
         [ActionName("GetProductList")]
         [HttpGet]
+        [RequestAuthorize]
         public List<ProductInfo> GetProductList()
         {
             List<ProductInfo> productList = NProductRepository.GetProductList();
@@ -91,6 +92,21 @@ namespace WX.API.C2C.Controllers
             distance = Math.Round(distance * 10000) / 10000;
             return distance;
         }
+
+        //获取OppenId
+
+        //[HttpGet]
+        //[ActionName("Ge")]
+        //public void Ge(string code)
+        //{
+        //    string appid = "wxf18297441a9668f6";//开发者ID
+        //    string secret = "e10bd6236bf4ee313d32583fa341ce38";//开发者秘钥
+        //    HttpClient cl = new HttpClient();
+        //    var result = cl.PostAsync("https://api.weixin.qq.com/sns/jscode2session?appid=" + appid + "&secret=" + secret + "&js_code=" + code.ToString() + "&grant_type=authorization_code", null).Result;
+        //    var a = result.Content.ReadAsStringAsync().Result;
+      
+          
+        //}
 
     }
 }

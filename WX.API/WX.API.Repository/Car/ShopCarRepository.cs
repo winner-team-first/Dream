@@ -58,11 +58,14 @@ namespace WX.API.Repository.Car
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                var productState = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2 and a.productstate > 0 ").ToList();
+                var productState = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductId,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2 and a.productstate > 0 ").ToList();
                 return productState;
             }
         }
-
+        /// <summary>
+        /// 获取地址
+        /// </summary>
+        /// <returns></returns>
         public List<UserAddress> GetAddress()
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
@@ -71,5 +74,33 @@ namespace WX.API.Repository.Car
                 return address;
             }
         }
+        /// <summary>
+        /// 添加订单
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public int AddOrderInfo(OrderInfo data)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
+            {
+                string sql = string.Format("insert into orderinfo (UserID,OrderProductMoney,OrderPaymoney,OrderDiscountsMoney,OrderAddrPerson,OrderAddrPhone,OrderAddres,OrderState,OrderCreateTime,OrderPayTime,OrderEndTime) values(2,'{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','2019-2-15 19:35:02','2019-2-15 19:35:02')", data.OrderProductMoney, data.OrderPaymoney, data.OrderDiscountsMoney, data.OrderAddrPerson, data.OrderAddrPhone, data.OrderAddres, data.OrderState,data.OrderCreateTime);
+                var i = con.Execute(sql);
+                return i;
+            }
+        }
+        public int AddOrderProduct(OrderProduct data)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
+            {
+                string orderidsql = "select ID from orderinfo ORDER BY ID DESC  LIMIT 1";
+                var orderid = con.Query<int>(orderidsql).FirstOrDefault();
+                string sql = string.Format("INSERT INTO orderproductinfo (OrderID,productinfoID,OrderProductName,orderproductNum,orderproductprice,orderproducttotalprice,orderproductimg,orderproducstatus) values({0},{1},'{2}',{3},{4},{5},'{6}',{7})",orderid,data.ProductInfoID,data.OrderProductName,data.OrderProductNum,data.OrderProductPrice,data.OrderProductTotalPrice,data.OrderProductImg,data.OrderProductStatus);
+
+                var i = con.Execute(sql);
+                return i;
+            }
+        }
+
+        
     }
 }

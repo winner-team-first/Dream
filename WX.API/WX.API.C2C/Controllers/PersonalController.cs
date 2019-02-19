@@ -37,6 +37,7 @@ namespace WX.API.C2C.Controllers
             return getallorders;
         }
 
+
         /// <summary>
         /// 根据不同订单状态查询订单
         /// </summary>
@@ -49,6 +50,7 @@ namespace WX.API.C2C.Controllers
             foreach (var item in getOrders)
             {
                 List<OrderProductInfo> orderProducts = CollectionInfoRepository.GetProductByOrderID(item.ID);
+
                 foreach (var orderProduct in orderProducts)
                 {
                     item.Products.Add(orderProduct);
@@ -106,5 +108,30 @@ namespace WX.API.C2C.Controllers
             int i = CollectionInfoRepository.Payment(id);
             return i;
         }
+        /// <summary>
+        /// 取消订单
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ActionName("DeleteOrderID")]
+        [HttpGet]
+        public int DeleteOrderID(string id)
+        {
+            int i = CollectionInfoRepository.DeleteOrderID(id);
+            return i;
+        }
+        /// <summary>
+        /// 提醒商家
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ActionName("Remind")]
+        [HttpGet]
+        public int Remind(string id)
+        {
+            int i = CollectionInfoRepository.Remind(id);
+            return i;
+        }
     }
+
 }

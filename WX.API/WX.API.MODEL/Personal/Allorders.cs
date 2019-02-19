@@ -21,8 +21,10 @@ namespace WX.API.Model.Personal
         public int OrderState { get; set; }
         public string ProductImage { get; set; }
         public string OrderProductImg { get; set; }
+        public decimal OrderPaymoney { get; set; }
 
-        
+        public  decimal OrderProductMoney { get; set; }
+
 
         public List<OrderProductInfo> Products { get; set; } = new List<OrderProductInfo>();
     }

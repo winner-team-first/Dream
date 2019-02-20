@@ -52,7 +52,12 @@ namespace WX.API.IRepository.Personal
         /// <param name="id"></param>
         /// <returns></returns>
         int Payment(string id);
-
+        /// <summary>
+        /// 确认收货
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        int Confirm(string id);
         /// <summary>
         /// 取消订单
         /// </summary>

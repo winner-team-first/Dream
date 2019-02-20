@@ -70,6 +70,11 @@ namespace WX.API.Repository.Personal
             }
         }
 
+        /// <summary>
+        /// 根据OrderID 查询订单下的商品
+        /// </summary>
+        /// <param name="OrderID"></param>
+        /// <returns></returns>
         public List<OrderProductInfo> GetProduct(int OrderID)
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
@@ -145,6 +150,21 @@ namespace WX.API.Repository.Personal
                 var sql = $"SELECT * from orderproductinfo WHERE OrderID={orderId}";
                 var orderProList = con.Query<OrderProductInfo>(sql).ToList();
                 return orderProList;
+            }
+        }
+
+        /// <summary>
+        /// 确认收货
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public int Confirm(string id)
+        {
+            using (IDbConnection con = new MySqlConnection(ConfigHelper.FxwConnection))
+            {
+                var sql = $"update OrderInfo set OrderState=1 where ID={id}";
+                var i = con.Execute(sql);
+                return i;
             }
         }
         /// <summary>

@@ -108,6 +108,19 @@ namespace WX.API.C2C.Controllers
             int i = CollectionInfoRepository.Payment(id);
             return i;
         }
+
+        /// <summary>
+        /// 确认收货
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [ActionName("Confirm")]
+        [HttpGet]
+        public int Confirm(string id)
+        {
+            int i = CollectionInfoRepository.Confirm(id);
+            return i;
+        }
         /// <summary>
         /// 取消订单
         /// </summary>

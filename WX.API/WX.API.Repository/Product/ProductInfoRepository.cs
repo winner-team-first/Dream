@@ -22,7 +22,7 @@ namespace WX.API.Repository.Product
         /// <returns></returns>
         public List<ProductInfo> GetProductInfo()
         {
-            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var productList= conn.Query<ProductInfo>("select * from ProductInfo").ToList();
                 return productList;
@@ -36,7 +36,7 @@ namespace WX.API.Repository.Product
         /// <returns></returns>
         public int AddCollection(int productId)
         {
-            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var sql = $"INSERT INTO collection(UserID,GoodsID) VALUES(2,{productId})";
                 var i = conn.Execute(sql);
@@ -51,7 +51,7 @@ namespace WX.API.Repository.Product
         /// <returns></returns>
         public int DelCollection(int id)
         {
-            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var sql = $"DELETE FROM collection WHERE GoodsID={id}";
                 var i= conn.Execute(sql);
@@ -66,7 +66,7 @@ namespace WX.API.Repository.Product
         /// <returns></returns>
         public List<Img> GetImgByProductID(int productID)
         {
-            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn = new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var imgList= conn.Query<Img>("select * from img where ProductID=" + productID ).ToList();
                 return imgList;
@@ -79,7 +79,7 @@ namespace WX.API.Repository.Product
         /// <returns></returns
         public List<ProductInfo> GetProductByClassfiyID(int classfiyId)
         {
-            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var productList = conn.Query<ProductInfo>("SELECT * from productinfo WHERE ClassifyID =" + classfiyId ).ToList();
                 return productList;
@@ -93,7 +93,7 @@ namespace WX.API.Repository.Product
         /// <returns></returns>
         public List<ProductInfo> GetProByName(string proName)
         {
-            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var sql = $"SELECT * FROM productinfo WHERE ProductName LIKE '%{proName}%'";
                 var productList = conn.Query<ProductInfo>(sql).ToList();
@@ -108,7 +108,7 @@ namespace WX.API.Repository.Product
         /// <returns>受影响行数</returns>
         public int AddShopCar(int productId)
         {
-            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.GzxConnection))
+            using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
                 var sql = $"insert into shopcar(productId,UId,ProductCount,ProductState) VALUES({productId},2,1,0)";
                 var i= conn.Execute(sql);

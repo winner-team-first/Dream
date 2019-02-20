@@ -19,7 +19,7 @@ namespace WX.API.Repository.Car
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                var shopCarList = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState, b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2").ToList();
+                var shopCarList = con.Query<ShopCar>("select a.ID,a.ProductCount,a.ProductState88 b.ProductName,b.ProductSummary,b.ProductImage,b.ProductPrice,b.ProductStock,b.ShopID FROM shopcar a INNER JOIN productinfo b on a.ProductId = b.ID where UID = 2").ToList();
                 return shopCarList;
             }
         }

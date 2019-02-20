@@ -110,9 +110,21 @@ namespace WX.API.Repository.Product
         {
             using (MySqlConnection conn=new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                var sql = $"insert into shopcar(productId,UId,ProductCount,ProductState) VALUES({productId},2,1,0)";
-                var i= conn.Execute(sql);
-                return i;
+                var sqlOne = "select * from shopcar where UId=2 and ProductId="+productId;
+                var resOne = conn.Query<ShopCar>(sqlOne).FirstOrDefault();
+                if (resOne!=null)
+                {
+                    var sqlTwo = "update shopcar set ProductCount=ProductCount+1 where UId=2 and ProductId=" + productId;
+                    var resTwo = conn.Execute(sqlTwo);
+                    return resTwo;
+                }
+                else
+                {
+                    var sqlTwo = $"insert into shopcar(productId,UId,ProductCount,ProductState) VALUES({productId},2,1,0)";
+                    var resTwo = conn.Execute(sqlTwo);
+                    return resTwo;
+                }
+                
             }
         }
 

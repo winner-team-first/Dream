@@ -28,7 +28,7 @@ namespace WX.API.Common
         {
             get
             {
-                return ConfigurationManager.ConnectionStrings["ConnectionFxw"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["ConnectionZsw"].ConnectionString;
             }
         }
 
@@ -40,7 +40,7 @@ namespace WX.API.Common
         {
             get
             {
-                return ConfigurationManager.ConnectionStrings["ConnectionLjb"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["ConnectionZsw"].ConnectionString;
             }
         }
 
@@ -52,7 +52,7 @@ namespace WX.API.Common
         {
             get
             {
-                return ConfigurationManager.ConnectionStrings["ConnectionGzx"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["ConnectionZsw"].ConnectionString;
             }
         }
 
@@ -64,7 +64,7 @@ namespace WX.API.Common
         {
             get
             {
-                return ConfigurationManager.ConnectionStrings["ConnectionLhj"].ConnectionString;
+                return ConfigurationManager.ConnectionStrings["ConnectionZsw"].ConnectionString;
             }
         }
     }

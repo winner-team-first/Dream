@@ -83,7 +83,7 @@ namespace WX.API.Repository.Car
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                string sql = string.Format("insert into orderinfo (UserID,OrderProductMoney,OrderPaymoney,OrderDiscountsMoney,OrderAddrPerson,OrderAddrPhone,OrderAddres,OrderState,OrderCreateTime,OrderPayTime,OrderEndTime) values(2,'{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','2019-2-15 19:35:02','2019-2-15 19:35:02')", data.OrderProductMoney, data.OrderPaymoney, data.OrderDiscountsMoney, data.OrderAddrPerson, data.OrderAddrPhone, data.OrderAddres, data.OrderState,data.OrderCreateTime);
+                string sql = string.Format("insert into orderinfo (UserID,OrderProductMoney,OrderPaymoney,OrderDiscountsMoney,OrderAddrPerson,OrderAddrPhone,OrderAddres,OrderState,OrderCreateTime,OrderPayTime,OrderEndTime) values(2,'{0}','{1}','{2}','{3}','{4}','{5}',{6},'{7}','2019-2-15 19:35:02','2019-2-15 19:35:02')", data.OrderProductMoney, data.OrderPaymoney, data.OrderDiscountsMoney, data.OrderAddrPerson, data.OrderAddrPhone, data.OrderAddres, 2,DateTime.Now);
                 var i = con.Execute(sql);
                 return i;
             }
@@ -92,9 +92,9 @@ namespace WX.API.Repository.Car
         {
             using (IDbConnection con = new MySqlConnection(ConfigHelper.LhjConnection))
             {
-                string orderidsql = "select ID from orderinfo ORDER BY ID DESC  LIMIT 1";
-                var orderid = con.Query<int>(orderidsql).FirstOrDefault();
-                string sql = string.Format("INSERT INTO orderproductinfo (OrderID,productinfoID,OrderProductName,orderproductNum,orderproductprice,orderproducttotalprice,orderproductimg,orderproducstatus) values({0},{1},'{2}',{3},{4},{5},'{6}',{7})",orderid,data.ProductInfoID,data.OrderProductName,data.OrderProductNum,data.OrderProductPrice,data.OrderProductTotalPrice,data.OrderProductImg,data.OrderProductStatus);
+                string orderidsql = "select * from orderinfo ORDER BY ID DESC  LIMIT 1";
+                var orderid = con.Query<OrderInfo>(orderidsql).FirstOrDefault();
+                string sql = string.Format("INSERT INTO orderproductinfo (OrderID,productinfoID,OrderProductName,orderproductNum,orderproductprice,orderproducttotalprice,orderproductimg,orderproducstatus) values({0},{1},'{2}',{3},{4},{5},'{6}',{7})",orderid.ID,data.ProductInfoID,data.OrderProductName,data.OrderProductNum,data.OrderProductPrice,data.OrderProductTotalPrice,data.OrderProductImg,data.OrderProductStatus);
 
                 var i = con.Execute(sql);
                 return i;
